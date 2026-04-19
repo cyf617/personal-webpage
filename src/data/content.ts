@@ -1,17 +1,42 @@
+/* ============================================================
+ *  网站所有文字内容都在这个文件里,修改这里 = 修改网站
+ * ============================================================
+ *
+ *  ✅ 基本规则(超简单)
+ *  1. 只改 **双引号里的文字**,其他符号(逗号、冒号、方括号)千万别删
+ *  2. 每个板块都有 `en:`(英文)和 `zh:`(中文)两份,要改通常两份都改
+ *  3. 想加一项 → 复制一整块(用 { } 包起来那段),粘贴在下面,改文字
+ *  4. 想删一项 → 把整块 { ... }, 删掉(连同最后那个逗号)
+ *  5. 改完保存文件,浏览器会自动刷新;想上线 → 终端跑 `git add . && git commit -m "更新内容" && git push`
+ *
+ *  ⚠️ 常见坑
+ *  - 不要少写逗号,也不要多写逗号在 } 前面
+ *  - 不要把双引号 " 改成中文引号 " "
+ *  - 如果页面显示空白或报错,看终端里的提示,通常就是括号没配对
+ * ============================================================ */
+
 export const content = {
+
+  // ┌──────────────────────────────────────────────────────
+  // │ ① 顶部导航栏文字(点击跳到对应板块)
+  // └──────────────────────────────────────────────────────
   nav: {
     en: { about: "About", research: "Research", education: "Education", experience: "Experience", skills: "Skills", contact: "Contact" },
     zh: { about: "关于", research: "研究", education: "教育", experience: "实习经历", skills: "技能", contact: "联系" },
   },
+
+  // ┌──────────────────────────────────────────────────────
+  // │ ② 首屏 Hero 区(打开网站第一眼看到的大字)
+  // └──────────────────────────────────────────────────────
   hero: {
     en: {
-      greet: "// welcome",
-      name: "Yifan Chen",
-      title: "Researcher · Transport × AI · Data Science",
-      tagline: "Exploring safe, trustworthy AI for autonomous driving and intelligent transportation systems.",
+      greet: "// welcome",                                   // 名字上面那行小字
+      name: "Yifan Chen",                                    // 大标题(英文名)
+      title: "Researcher · Transport × AI · Data Science",   // 一句话身份
+      tagline: "Exploring safe, trustworthy AI for autonomous driving and intelligent transportation systems.", // 详细介绍一句
       location: "London · Zhengzhou",
-      cta1: "Contact Me",
-      cta2: "Download CV",
+      cta1: "Contact Me",                                    // 第一个按钮文字
+      cta2: "Download CV",                                   // 第二个按钮文字
     },
     zh: {
       greet: "// 你好",
@@ -23,6 +48,12 @@ export const content = {
       cta2: "下载简历",
     },
   },
+
+  // ┌──────────────────────────────────────────────────────
+  // │ ③ About 板块(关于我)
+  // │   body 是数组,每个字符串是一段话。想加段落?在数组里加一行字符串。
+  // │   interests 是首屏底部的小标签(研究兴趣)
+  // └──────────────────────────────────────────────────────
   about: {
     en: {
       heading: "About",
@@ -36,18 +67,34 @@ export const content = {
     zh: {
       heading: "关于我",
       body: [
-        "帝国理工学院「交通与数据科学」硕士（Merit with Distinction），西交利物浦大学「数学与应用数学」本科（一等荣誉学位）。",
-        "研究方向聚焦于安全与可信 AI、自动驾驶以及面向交通系统的机器学习——把原始时空数据转化为既精准、可解释，又对政策有参考价值的模型。",
+        "帝国理工学院「交通与数据科学」硕士(Merit with Distinction),西交利物浦大学「数学与应用数学」本科(一等荣誉学位)。",
+        "研究方向聚焦于安全与可信 AI、自动驾驶以及面向交通系统的机器学习——把原始时空数据转化为既精准、可解释,又对政策有参考价值的模型。",
         "我喜欢把严谨的数学、现代深度学习与真实世界的影响结合在一起。",
       ],
       interests: ["安全可信 AI", "自动驾驶", "交通机器学习", "时空数据建模"],
     },
   },
+
+  // ┌──────────────────────────────────────────────────────
+  // │ ④ 研究项目板块 ⭐ 最常改的地方
+  // │
+  // │ 想加一个新项目:复制下面任意一整个 { title: ..., tags: [...] } 块,
+  // │ 粘贴在 items 数组里,改掉内容即可。en 和 zh 里都要加,保证索引对应。
+  // │
+  // │ 字段说明:
+  // │   title    项目标题
+  // │   role     你的角色 / 所属机构(会显示成小蓝字)
+  // │   date     时间段
+  // │   summary  一句话概述
+  // │   bullets  成果要点(数组,每条是一行,自动加 ▹ 符号)
+  // │   tags     底部的技术标签(数组)
+  // └──────────────────────────────────────────────────────
   research: {
     en: {
       heading: "Selected Research",
       subheading: "Research projects at Imperial College London and beyond.",
       items: [
+        // ─── 项目 1 ───
         {
           title: "Personalised Car-following Modelling using Diffusion-based Model",
           role: "MSc Dissertation · Imperial College London",
@@ -61,6 +108,7 @@ export const content = {
           ],
           tags: ["PyTorch", "Diffusion", "Transformer", "nuPlan"],
         },
+        // ─── 项目 2 ───
         {
           title: "Big Data & AI Logistics Model for First-Last Mile — India",
           role: "Project Leader · In collaboration with World Bank Group",
@@ -74,6 +122,7 @@ export const content = {
           ],
           tags: ["GIS", "Classification", "World Bank", "Python"],
         },
+        // ─── 项目 3 ───
         {
           title: "ML for Policy: Reducing CO₂ Emissions in the Canadian Auto Sector",
           role: "Project Leader · Imperial College London",
@@ -87,6 +136,7 @@ export const content = {
           ],
           tags: ["SHAP", "Interpretability", "Policy", "Regression"],
         },
+        // ─── 项目 4 ───
         {
           title: "A Topological Method in Music Recognition Algorithms",
           role: "Undergraduate Final Year Project · First-Class",
@@ -100,12 +150,14 @@ export const content = {
           ],
           tags: ["Persistent Homology", "TDA", "Audio", "Mathematics"],
         },
+        // 想加新项目?在这里粘贴一个新的 { ... }, 块,结构照抄上面任意一个
       ],
     },
     zh: {
       heading: "研究项目",
       subheading: "在帝国理工及之前完成的研究工作。",
       items: [
+        // ─── 项目 1(对应英文项目 1,顺序必须一致) ───
         {
           title: "基于扩散模型的个性化跟车建模",
           role: "硕士毕业论文 · 帝国理工学院",
@@ -119,6 +171,7 @@ export const content = {
           ],
           tags: ["PyTorch", "Diffusion", "Transformer", "nuPlan"],
         },
+        // ─── 项目 2 ───
         {
           title: "印度首末公里物流大数据与 AI 模型",
           role: "项目组长 · 与世界银行 (World Bank Group) 合作",
@@ -132,6 +185,7 @@ export const content = {
           ],
           tags: ["GIS", "分类", "世界银行", "Python"],
         },
+        // ─── 项目 3 ───
         {
           title: "可解释机器学习驱动的加拿大汽车行业 CO₂ 减排政策",
           role: "项目组长 · 帝国理工学院",
@@ -145,6 +199,7 @@ export const content = {
           ],
           tags: ["SHAP", "可解释性", "政策", "回归"],
         },
+        // ─── 项目 4 ───
         {
           title: "拓扑方法在音乐识别算法中的应用",
           role: "本科毕业设计 · 一等",
@@ -158,13 +213,26 @@ export const content = {
           ],
           tags: ["持续同调", "TDA", "音频", "数学"],
         },
+        // 想加新项目?在这里粘贴新的 { ... }, 块(记得英文那边也要加同样位置的一块)
       ],
     },
   },
+
+  // ┌──────────────────────────────────────────────────────
+  // │ ⑤ 教育经历(时间线样式)
+  // │
+  // │ 字段:
+  // │   school    学校名
+  // │   degree    学位 / 专业
+  // │   date      时间段
+  // │   location  地点
+  // │   detail    要点(数组,每条一行)
+  // └──────────────────────────────────────────────────────
   education: {
     en: {
       heading: "Education",
       items: [
+        // ─── 学历 1(最近的写最上面) ───
         {
           school: "Imperial College London",
           degree: "MSc in Transport with Data Science",
@@ -176,6 +244,7 @@ export const content = {
             "Dissertation: Personalised Car-following Modelling using Diffusion-based Model.",
           ],
         },
+        // ─── 学历 2 ───
         {
           school: "Xi'an Jiaotong-Liverpool University",
           degree: "BSc in Applied Mathematics",
@@ -217,6 +286,10 @@ export const content = {
       ],
     },
   },
+
+  // ┌──────────────────────────────────────────────────────
+  // │ ⑥ 实习 / 工作经历(结构和 education 一样)
+  // └──────────────────────────────────────────────────────
   experience: {
     en: {
       heading: "Experience",
@@ -273,6 +346,15 @@ export const content = {
       ],
     },
   },
+
+  // ┌──────────────────────────────────────────────────────
+  // │ ⑦ 技能板块
+  // │
+  // │ groups 是技能分组,每组一个 { label, items } 对象。
+  // │ items 里每个字符串会渲染成一个小标签。
+  // │ 想加分组 → 在 groups 数组里加新对象。
+  // │ 想加某项技能 → 在 items 数组里加字符串。
+  // └──────────────────────────────────────────────────────
   skills: {
     en: {
       heading: "Skills",
@@ -293,6 +375,13 @@ export const content = {
       ],
     },
   },
+
+  // ┌──────────────────────────────────────────────────────
+  // │ ⑧ 联系方式板块
+  // │   email 和 phone 会显示在页面上
+  // │   github 改了会影响 GitHub 按钮链接
+  // │   想加 LinkedIn / Google Scholar?告诉我帮你加
+  // └──────────────────────────────────────────────────────
   contact: {
     en: {
       heading: "Get in touch",
@@ -313,6 +402,10 @@ export const content = {
       cvZh: "Download CV (EN)",
     },
   },
+
+  // ┌──────────────────────────────────────────────────────
+  // │ ⑨ 底部 Footer
+  // └──────────────────────────────────────────────────────
   footer: {
     en: { built: "Built with Astro & Tailwind · Dark Tech Edition", rights: "© 2026 Yifan Chen" },
     zh: { built: "使用 Astro 与 Tailwind 构建 · 深色科技主题", rights: "© 2026 陈奕帆" },
