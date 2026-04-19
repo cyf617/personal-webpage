@@ -1,0 +1,391 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { content as c } from "../data/content";
+---
+
+<Layout>
+  <!-- ============== NAV ============== -->
+  <header class="fixed top-0 inset-x-0 z-50 nav-blur border-b border-white/5">
+    <nav class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="#top" class="flex items-center gap-2 group">
+        <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-400 to-violet-500 font-mono text-[13px] font-bold text-slate-950">YC</span>
+        <span class="font-mono text-sm text-slate-300 group-hover:text-white transition-colors">
+          <span class="lang-en">yifan.chen</span>
+          <span class="lang-zh">陈奕帆</span>
+        </span>
+      </a>
+      <ul class="hidden md:flex items-center gap-7 text-sm text-slate-400">
+        {(["about","research","education","experience","skills","contact"] as const).map((k) => (
+          <li>
+            <a href={`#${k}`} class="hover:text-white transition-colors link-underline pb-1">
+              <span class="lang-en">{c.nav.en[k]}</span>
+              <span class="lang-zh">{c.nav.zh[k]}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+      <button
+        data-lang-toggle
+        class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 transition-colors font-mono text-xs text-slate-300"
+        aria-label="Toggle language"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-3.5 h-3.5"><path d="M5 8l6 6M4 14l6-6 2-3M2 5h12M7 2h1M22 22l-5-10-5 10M14 18h6"/></svg>
+        <span class="lang-en">中文</span>
+        <span class="lang-zh">EN</span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- ============== HERO ============== -->
+  <section id="top" class="relative min-h-screen flex items-center overflow-hidden pt-20">
+    <div class="absolute inset-0 bg-grid"></div>
+    <div class="glow-orb bg-cyan-500 w-[500px] h-[500px] -top-40 -left-40"></div>
+    <div class="glow-orb bg-violet-600 w-[500px] h-[500px] top-1/2 -right-40"></div>
+
+    <div class="relative max-w-6xl mx-auto px-6 w-full grid md:grid-cols-[1.3fr_1fr] gap-10 items-center">
+      <div class="reveal">
+        <p class="font-mono text-sm text-cyan-400/80 mb-4 cursor">
+          <span class="lang-en">{c.hero.en.greet}</span>
+          <span class="lang-zh">{c.hero.zh.greet}</span>
+        </p>
+        <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight leading-[1.05] mb-6">
+          <span class="lang-en">Yifan <span class="gradient-text">Chen</span></span>
+          <span class="lang-zh">陈<span class="gradient-text"> 奕帆</span></span>
+        </h1>
+        <p class="font-mono text-sm md:text-base text-slate-400 mb-6">
+          <span class="lang-en">{c.hero.en.title}</span>
+          <span class="lang-zh">{c.hero.zh.title}</span>
+        </p>
+        <p class="text-lg md:text-xl text-slate-300 leading-relaxed max-w-2xl mb-8">
+          <span class="lang-en">{c.hero.en.tagline}</span>
+          <span class="lang-zh">{c.hero.zh.tagline}</span>
+        </p>
+
+        <div class="flex flex-wrap gap-3 mb-10">
+          <a href="#contact" class="group inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-cyan-400 to-violet-500 text-slate-950 font-semibold text-sm hover:shadow-[0_0_40px_rgba(34,211,238,0.35)] transition-shadow">
+            <span class="lang-en">{c.hero.en.cta1}</span>
+            <span class="lang-zh">{c.hero.zh.cta1}</span>
+            <svg class="w-4 h-4 group-hover:translate-x-0.5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+          <a href="/cv/Yifan_Chen_CV_EN.pdf" target="_blank" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-white/15 bg-white/5 hover:bg-white/10 hover:border-white/25 transition-colors text-sm text-slate-200">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+            <span class="lang-en">{c.hero.en.cta2}</span>
+            <span class="lang-zh">{c.hero.zh.cta2}</span>
+          </a>
+        </div>
+
+        <div class="flex flex-wrap gap-2">
+          {c.about.en.interests.map((i, idx) => (
+            <span class="chip">
+              <span class="lang-en">{c.about.en.interests[idx]}</span>
+              <span class="lang-zh">{c.about.zh.interests[idx]}</span>
+            </span>
+          ))}
+        </div>
+      </div>
+
+      <!-- Terminal card -->
+      <div class="reveal card p-5 font-mono text-[13px] leading-6 hidden md:block">
+        <div class="flex items-center gap-1.5 mb-3">
+          <span class="w-3 h-3 rounded-full bg-red-400/80"></span>
+          <span class="w-3 h-3 rounded-full bg-yellow-400/80"></span>
+          <span class="w-3 h-3 rounded-full bg-green-400/80"></span>
+          <span class="ml-2 text-xs text-slate-500">~/about.py</span>
+        </div>
+        <pre class="whitespace-pre-wrap text-slate-300"><span class="text-violet-400">class</span> <span class="text-cyan-400">Researcher</span>:
+  name   = <span class="text-emerald-400">"Yifan Chen"</span>
+  role   = <span class="text-emerald-400">"MSc, Imperial"</span>
+  focus  = [<span class="text-emerald-400">"Safe AI"</span>,
+            <span class="text-emerald-400">"Autonomy"</span>,
+            <span class="text-emerald-400">"ML4Transport"</span>]
+  tools  = (<span class="text-emerald-400">"PyTorch"</span>, <span class="text-emerald-400">"Diffusion"</span>,
+            <span class="text-emerald-400">"Transformers"</span>)
+
+  <span class="text-violet-400">def</span> <span class="text-cyan-400">say_hi</span>(self):
+    <span class="text-violet-400">return</span> <span class="text-emerald-400">"let's build something"</span>
+</pre>
+      </div>
+    </div>
+
+    <!-- Scroll hint -->
+    <a href="#about" class="absolute bottom-6 left-1/2 -translate-x-1/2 text-slate-500 hover:text-slate-300 transition-colors text-xs font-mono flex flex-col items-center gap-1.5" aria-label="Scroll down">
+      <span>scroll</span>
+      <svg class="w-4 h-4 animate-bounce" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    </a>
+  </section>
+
+  <!-- ============== ABOUT ============== -->
+  <section id="about" class="relative py-24 md:py-32">
+    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-[1fr_2fr] gap-10">
+      <div class="reveal">
+        <p class="font-mono text-xs text-cyan-400 mb-3">01 / about</p>
+        <h2 class="text-3xl md:text-4xl font-bold">
+          <span class="lang-en">{c.about.en.heading}</span>
+          <span class="lang-zh">{c.about.zh.heading}</span>
+        </h2>
+      </div>
+      <div class="reveal space-y-5 text-slate-300 text-base md:text-lg leading-relaxed">
+        {c.about.en.body.map((_, i) => (
+          <p>
+            <span class="lang-en">{c.about.en.body[i]}</span>
+            <span class="lang-zh">{c.about.zh.body[i]}</span>
+          </p>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== RESEARCH ============== -->
+  <section id="research" class="relative py-24 md:py-32 border-t border-white/5">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="reveal mb-12">
+        <p class="font-mono text-xs text-cyan-400 mb-3">02 / research</p>
+        <h2 class="text-3xl md:text-4xl font-bold mb-3">
+          <span class="lang-en">{c.research.en.heading}</span>
+          <span class="lang-zh">{c.research.zh.heading}</span>
+        </h2>
+        <p class="text-slate-400">
+          <span class="lang-en">{c.research.en.subheading}</span>
+          <span class="lang-zh">{c.research.zh.subheading}</span>
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-5">
+        {c.research.en.items.map((_, i) => {
+          const en = c.research.en.items[i];
+          const zh = c.research.zh.items[i];
+          return (
+            <article class="reveal card p-6 md:p-7 flex flex-col">
+              <div class="flex items-start justify-between gap-3 mb-3">
+                <h3 class="text-lg md:text-xl font-semibold leading-snug">
+                  <span class="lang-en">{en.title}</span>
+                  <span class="lang-zh">{zh.title}</span>
+                </h3>
+                <span class="font-mono text-[11px] text-slate-500 whitespace-nowrap pt-1">
+                  <span class="lang-en">{en.date}</span>
+                  <span class="lang-zh">{zh.date}</span>
+                </span>
+              </div>
+              <p class="font-mono text-xs text-cyan-400/90 mb-4">
+                <span class="lang-en">{en.role}</span>
+                <span class="lang-zh">{zh.role}</span>
+              </p>
+              <p class="text-slate-300 text-sm mb-4 leading-relaxed">
+                <span class="lang-en">{en.summary}</span>
+                <span class="lang-zh">{zh.summary}</span>
+              </p>
+              <ul class="space-y-1.5 mb-5 text-sm text-slate-400">
+                {en.bullets.map((_, j) => (
+                  <li class="flex gap-2">
+                    <span class="text-cyan-400 mt-1.5 shrink-0">▹</span>
+                    <span>
+                      <span class="lang-en">{en.bullets[j]}</span>
+                      <span class="lang-zh">{zh.bullets[j]}</span>
+                    </span>
+                  </li>
+                ))}
+              </ul>
+              <div class="mt-auto flex flex-wrap gap-1.5">
+                {en.tags.map((_, j) => (
+                  <span class="chip">
+                    <span class="lang-en">{en.tags[j]}</span>
+                    <span class="lang-zh">{zh.tags[j]}</span>
+                  </span>
+                ))}
+              </div>
+            </article>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== EDUCATION ============== -->
+  <section id="education" class="relative py-24 md:py-32 border-t border-white/5">
+    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-[1fr_2fr] gap-10">
+      <div class="reveal">
+        <p class="font-mono text-xs text-cyan-400 mb-3">03 / education</p>
+        <h2 class="text-3xl md:text-4xl font-bold">
+          <span class="lang-en">{c.education.en.heading}</span>
+          <span class="lang-zh">{c.education.zh.heading}</span>
+        </h2>
+      </div>
+      <div class="relative pl-8 border-l border-white/10 space-y-10">
+        {c.education.en.items.map((_, i) => {
+          const en = c.education.en.items[i];
+          const zh = c.education.zh.items[i];
+          return (
+            <div class="reveal relative">
+              <span class="timeline-dot"></span>
+              <div class="flex items-center justify-between gap-3 mb-1">
+                <h3 class="text-lg md:text-xl font-semibold">
+                  <span class="lang-en">{en.school}</span>
+                  <span class="lang-zh">{zh.school}</span>
+                </h3>
+                <span class="font-mono text-[11px] text-slate-500 whitespace-nowrap">
+                  <span class="lang-en">{en.date}</span>
+                  <span class="lang-zh">{zh.date}</span>
+                </span>
+              </div>
+              <p class="text-cyan-400/90 font-mono text-xs mb-1">
+                <span class="lang-en">{en.degree} · {en.location}</span>
+                <span class="lang-zh">{zh.degree} · {zh.location}</span>
+              </p>
+              <ul class="mt-3 space-y-1.5 text-sm text-slate-400">
+                {en.detail.map((_, j) => (
+                  <li class="flex gap-2">
+                    <span class="text-cyan-400 mt-1.5 shrink-0">▹</span>
+                    <span>
+                      <span class="lang-en">{en.detail[j]}</span>
+                      <span class="lang-zh">{zh.detail[j]}</span>
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== EXPERIENCE ============== -->
+  <section id="experience" class="relative py-24 md:py-32 border-t border-white/5">
+    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-[1fr_2fr] gap-10">
+      <div class="reveal">
+        <p class="font-mono text-xs text-cyan-400 mb-3">04 / experience</p>
+        <h2 class="text-3xl md:text-4xl font-bold">
+          <span class="lang-en">{c.experience.en.heading}</span>
+          <span class="lang-zh">{c.experience.zh.heading}</span>
+        </h2>
+      </div>
+      <div class="relative pl-8 border-l border-white/10 space-y-10">
+        {c.experience.en.items.map((_, i) => {
+          const en = c.experience.en.items[i];
+          const zh = c.experience.zh.items[i];
+          return (
+            <div class="reveal relative">
+              <span class="timeline-dot"></span>
+              <div class="flex items-center justify-between gap-3 mb-1">
+                <h3 class="text-lg md:text-xl font-semibold">
+                  <span class="lang-en">{en.company}</span>
+                  <span class="lang-zh">{zh.company}</span>
+                </h3>
+                <span class="font-mono text-[11px] text-slate-500 whitespace-nowrap">
+                  <span class="lang-en">{en.date}</span>
+                  <span class="lang-zh">{zh.date}</span>
+                </span>
+              </div>
+              <p class="text-cyan-400/90 font-mono text-xs mb-1">
+                <span class="lang-en">{en.role} · {en.location}</span>
+                <span class="lang-zh">{zh.role} · {zh.location}</span>
+              </p>
+              <ul class="mt-3 space-y-1.5 text-sm text-slate-400">
+                {en.detail.map((_, j) => (
+                  <li class="flex gap-2">
+                    <span class="text-cyan-400 mt-1.5 shrink-0">▹</span>
+                    <span>
+                      <span class="lang-en">{en.detail[j]}</span>
+                      <span class="lang-zh">{zh.detail[j]}</span>
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== SKILLS ============== -->
+  <section id="skills" class="relative py-24 md:py-32 border-t border-white/5">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="reveal mb-12">
+        <p class="font-mono text-xs text-cyan-400 mb-3">05 / skills</p>
+        <h2 class="text-3xl md:text-4xl font-bold">
+          <span class="lang-en">{c.skills.en.heading}</span>
+          <span class="lang-zh">{c.skills.zh.heading}</span>
+        </h2>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-5">
+        {c.skills.en.groups.map((_, i) => {
+          const en = c.skills.en.groups[i];
+          const zh = c.skills.zh.groups[i];
+          return (
+            <div class="reveal card p-6">
+              <p class="font-mono text-xs text-cyan-400 mb-4">
+                <span class="lang-en">// {en.label}</span>
+                <span class="lang-zh">// {zh.label}</span>
+              </p>
+              <div class="flex flex-wrap gap-2">
+                {en.items.map((_, j) => (
+                  <span class="chip text-slate-200">
+                    <span class="lang-en">{en.items[j]}</span>
+                    <span class="lang-zh">{zh.items[j]}</span>
+                  </span>
+                ))}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== CONTACT ============== -->
+  <section id="contact" class="relative py-24 md:py-32 border-t border-white/5 overflow-hidden">
+    <div class="glow-orb bg-violet-600 w-[500px] h-[500px] -bottom-40 left-1/2 -translate-x-1/2"></div>
+    <div class="relative max-w-3xl mx-auto px-6 text-center">
+      <p class="reveal font-mono text-xs text-cyan-400 mb-3">06 / contact</p>
+      <h2 class="reveal text-4xl md:text-5xl font-bold mb-5">
+        <span class="lang-en"><span class="gradient-text">{c.contact.en.heading}</span></span>
+        <span class="lang-zh"><span class="gradient-text">{c.contact.zh.heading}</span></span>
+      </h2>
+      <p class="reveal text-slate-300 text-base md:text-lg mb-8 leading-relaxed">
+        <span class="lang-en">{c.contact.en.subheading}</span>
+        <span class="lang-zh">{c.contact.zh.subheading}</span>
+      </p>
+
+      <div class="reveal flex flex-wrap justify-center gap-3 mb-10">
+        <a href={`mailto:${c.contact.en.email}`} class="group inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-cyan-400 to-violet-500 text-slate-950 font-semibold text-sm hover:shadow-[0_0_40px_rgba(34,211,238,0.35)] transition-shadow">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2zM22 6l-10 7L2 6"/></svg>
+          {c.contact.en.email}
+        </a>
+        <a href="/cv/Yifan_Chen_CV_EN.pdf" target="_blank" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-white/15 bg-white/5 hover:bg-white/10 transition-colors text-sm text-slate-200">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          CV (EN)
+        </a>
+        <a href="/cv/Yifan_Chen_CV_ZH.pdf" target="_blank" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-white/15 bg-white/5 hover:bg-white/10 transition-colors text-sm text-slate-200">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          中文简历
+        </a>
+        <a href={c.contact.en.github} target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-white/15 bg-white/5 hover:bg-white/10 transition-colors text-sm text-slate-200">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.5 5.73.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.56-.29-5.26-1.28-5.26-5.7 0-1.26.45-2.29 1.19-3.1-.12-.3-.52-1.47.11-3.07 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.78 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.6.24 2.77.12 3.07.74.81 1.18 1.84 1.18 3.1 0 4.43-2.7 5.41-5.27 5.69.41.36.78 1.06.78 2.13v3.16c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5Z"/></svg>
+          GitHub
+        </a>
+      </div>
+
+      <div class="reveal flex flex-wrap justify-center gap-5 font-mono text-sm text-slate-400">
+        <span class="inline-flex items-center gap-2">
+          <svg class="w-4 h-4 text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.8a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.28-1.28a2 2 0 0 1 2.11-.45c.9.35 1.84.6 2.8.72A2 2 0 0 1 22 16.92z"/></svg>
+          {c.contact.en.phone}
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== FOOTER ============== -->
+  <footer class="border-t border-white/5 py-8">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-3 text-xs font-mono text-slate-500">
+      <p>
+        <span class="lang-en">{c.footer.en.rights}</span>
+        <span class="lang-zh">{c.footer.zh.rights}</span>
+      </p>
+      <p>
+        <span class="lang-en">{c.footer.en.built}</span>
+        <span class="lang-zh">{c.footer.zh.built}</span>
+      </p>
+    </div>
+  </footer>
+</Layout>
