@@ -1,6 +1,9 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { content as c } from "../data/content";
+const BASE = import.meta.env.BASE_URL;
+const cvEN = `${BASE}/cv/Yifan_Chen_CV_EN.pdf`.replace(/\/+/g, "/");
+const cvZH = `${BASE}/cv/Yifan_Chen_CV_ZH.pdf`.replace(/\/+/g, "/");
 ---
 
 <Layout>
@@ -67,7 +70,7 @@ import { content as c } from "../data/content";
             <span class="lang-zh">{c.hero.zh.cta1}</span>
             <svg class="w-4 h-4 group-hover:translate-x-0.5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </a>
-          <a href="/cv/Yifan_Chen_CV_EN.pdf" target="_blank" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-white/15 bg-white/5 hover:bg-white/10 hover:border-white/25 transition-colors text-sm text-slate-200">
+          <a href={cvEN} target="_blank" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-white/15 bg-white/5 hover:bg-white/10 hover:border-white/25 transition-colors text-sm text-slate-200">
             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
             <span class="lang-en">{c.hero.en.cta2}</span>
             <span class="lang-zh">{c.hero.zh.cta2}</span>
@@ -352,11 +355,11 @@ import { content as c } from "../data/content";
           <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2zM22 6l-10 7L2 6"/></svg>
           {c.contact.en.email}
         </a>
-        <a href="/cv/Yifan_Chen_CV_EN.pdf" target="_blank" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-white/15 bg-white/5 hover:bg-white/10 transition-colors text-sm text-slate-200">
+        <a href={cvEN} target="_blank" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-white/15 bg-white/5 hover:bg-white/10 transition-colors text-sm text-slate-200">
           <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
           CV (EN)
         </a>
-        <a href="/cv/Yifan_Chen_CV_ZH.pdf" target="_blank" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-white/15 bg-white/5 hover:bg-white/10 transition-colors text-sm text-slate-200">
+        <a href={cvZH} target="_blank" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-white/15 bg-white/5 hover:bg-white/10 transition-colors text-sm text-slate-200">
           <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
           中文简历
         </a>

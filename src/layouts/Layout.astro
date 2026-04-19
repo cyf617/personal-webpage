@@ -5,6 +5,7 @@ interface Props {
   description?: string;
 }
 const { title = "Yifan Chen · 陈奕帆", description = "Personal website of Yifan Chen — Researcher in Safe & Trustworthy AI, Autonomous Driving and Machine Learning for Transportation." } = Astro.props;
+const faviconHref = `${import.meta.env.BASE_URL}/favicon.svg`.replace(/\/+/g, "/");
 ---
 <!doctype html>
 <html lang="en" data-lang="en">
@@ -13,7 +14,7 @@ const { title = "Yifan Chen · 陈奕帆", description = "Personal website of Yi
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <meta name="theme-color" content="#05070e" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href={faviconHref} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
