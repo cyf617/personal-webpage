@@ -18,7 +18,6 @@ npm run dev        # → http://localhost:4321
 npm run build      # → ./dist
 ```
 
-All site copy lives in [`src/data/content.ts`](src/data/content.ts).
 
 ---
 
