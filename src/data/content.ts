@@ -58,8 +58,8 @@ export const content = {
     en: {
       heading: "About",
       body: [
-        "MSc graduate in Transport with Data Science from Imperial College London (Merit with Distinction) and BSc in Applied Mathematics from Xi'an Jiaotong-Liverpool University (First-Class Honours).",
-        "My research centres on safe and trustworthy AI, autonomous driving, and machine learning for transportation systems — with a focus on turning raw spatio-temporal data into models that are accurate, interpretable, and policy-relevant.",
+        "MSc graduate in Transport with Data Science from Imperial College London and BSc in Applied Mathematics from Xi'an Jiaotong-Liverpool University.",
+        "My research centres on safe and trustworthy AI, autonomous driving, and intelligent transportation systems — with a focus on turning raw spatio-temporal data into models that are accurate, interpretable, and policy-relevant.",
         "I enjoy work that bridges rigorous mathematics, modern deep learning, and real-world impact.",
       ],
       interests: ["Safe & Trustworthy AI", "Autonomous Driving", "ML for Transportation", "Spatio-temporal Modelling"],
@@ -67,7 +67,7 @@ export const content = {
     zh: {
       heading: "关于我",
       body: [
-        "帝国理工学院「交通与数据科学」硕士(Merit with Distinction),西交利物浦大学「数学与应用数学」本科(一等荣誉学位)。",
+        "帝国理工学院「交通与数据科学」硕士,西交利物浦大学「数学与应用数学」本科。",
         "研究方向聚焦于安全与可信 AI、自动驾驶以及面向交通系统的机器学习——把原始时空数据转化为既精准、可解释,又对政策有参考价值的模型。",
         "我喜欢把严谨的数学、现代深度学习与真实世界的影响结合在一起。",
       ],
@@ -239,7 +239,7 @@ export const content = {
           date: "Sep 2024 — Sep 2025",
           location: "London, UK",
           detail: [
-            "Merit with Distinction in Taught Modules.",
+            "Merit Degree, and Distinction in Taught Modules.",
             "Core: Statistical Modelling (A), Machine Learning (A*), Data Engineering, Freight Transport & Logistics (A), Intelligent & Autonomous Transport.",
             "Dissertation: Personalised Car-following Modelling using Diffusion-based Model.",
           ],
@@ -267,7 +267,7 @@ export const content = {
           date: "2024 年 9 月 — 2025 年 9 月",
           location: "英国 · 伦敦",
           detail: [
-            "Merit with Distinction(优异等级).",
+            "Merit学位毕业, 在授课课程中获得Distinction.",
             "核心课程:统计建模 (A)、机器学习 (A*)、数据工程、货运与物流 (A)、智能与自动交通.",
             "毕业论文:基于扩散模型的个性化跟车建模.",
           ],
