@@ -120,7 +120,8 @@ html[data-lang="zh"] .lang-en { display: none !important; }
 
 .timeline-dot {
   position: absolute;
-  left: -7px;
+  /* Parent timeline column uses pl-8 (32px); offset dot to sit on the border line */
+  left: -39px;
   top: 8px;
   width: 14px;
   height: 14px;
