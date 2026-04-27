@@ -70,10 +70,13 @@ const cvZH = `${BASE}/cv/Yifan_Chen_CV_ZH.pdf`.replace(/\/+/g, "/");
             <span class="lang-zh">{c.hero.zh.cta1}</span>
             <svg class="w-4 h-4 group-hover:translate-x-0.5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </a>
-          <a href={cvEN} target="_blank" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-white/15 bg-white/5 hover:bg-white/10 hover:border-white/25 transition-colors text-sm text-slate-200">
+          <a href={cvEN} target="_blank" class="lang-en inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-white/15 bg-white/5 hover:bg-white/10 hover:border-white/25 transition-colors text-sm text-slate-200">
             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-            <span class="lang-en">{c.hero.en.cta2}</span>
-            <span class="lang-zh">{c.hero.zh.cta2}</span>
+            <span>{c.hero.en.cta2}</span>
+          </a>
+          <a href={cvZH} target="_blank" class="lang-zh inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-white/15 bg-white/5 hover:bg-white/10 hover:border-white/25 transition-colors text-sm text-slate-200">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+            <span>{c.hero.zh.cta2}</span>
           </a>
         </div>
 
@@ -95,17 +98,17 @@ const cvZH = `${BASE}/cv/Yifan_Chen_CV_ZH.pdf`.replace(/\/+/g, "/");
           <span class="w-3 h-3 rounded-full bg-green-400/80"></span>
           <span class="ml-2 text-xs text-slate-500">~/about.py</span>
         </div>
-        <pre class="whitespace-pre-wrap text-slate-300"><span class="text-violet-400">class</span> <span class="text-cyan-400">Researcher</span>:
+        <pre class="whitespace-pre-wrap text-slate-300"><span class="text-violet-400">class</span> <span class="text-cyan-400">AIDataAnalyst</span>:
   name   = <span class="text-emerald-400">"Yifan Chen"</span>
-  role   = <span class="text-emerald-400">"MSc, Imperial"</span>
-  focus  = [<span class="text-emerald-400">"Safe AI"</span>,
-            <span class="text-emerald-400">"Autonomy"</span>,
-            <span class="text-emerald-400">"ML4Transport"</span>]
-  tools  = (<span class="text-emerald-400">"PyTorch"</span>, <span class="text-emerald-400">"Diffusion"</span>,
-            <span class="text-emerald-400">"Transformers"</span>)
+  role   = <span class="text-emerald-400">"AI Data + Transport"</span>
+  focus  = [<span class="text-emerald-400">"Trustworthy AI"</span>,
+            <span class="text-emerald-400">"Sports AI"</span>,
+            <span class="text-emerald-400">"Complex Mobility"</span>]
+  tools  = (<span class="text-emerald-400">"Python"</span>, <span class="text-emerald-400">"PostgreSQL"</span>,
+            <span class="text-emerald-400">"PyTorch"</span>, <span class="text-emerald-400">"SHAP"</span>)
 
   <span class="text-violet-400">def</span> <span class="text-cyan-400">say_hi</span>(self):
-    <span class="text-violet-400">return</span> <span class="text-emerald-400">"let's build something"</span>
+    <span class="text-violet-400">return</span> <span class="text-emerald-400">"turn data into reliable AI"</span>
 </pre>
       </div>
     </div>
@@ -357,11 +360,13 @@ const cvZH = `${BASE}/cv/Yifan_Chen_CV_ZH.pdf`.replace(/\/+/g, "/");
         </a>
         <a href={cvEN} target="_blank" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-white/15 bg-white/5 hover:bg-white/10 transition-colors text-sm text-slate-200">
           <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-          CV (EN)
+          <span class="lang-en">{c.contact.en.cv}</span>
+          <span class="lang-zh">{c.contact.zh.cv}</span>
         </a>
         <a href={cvZH} target="_blank" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-white/15 bg-white/5 hover:bg-white/10 transition-colors text-sm text-slate-200">
           <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-          中文简历
+          <span class="lang-en">{c.contact.en.cvZh}</span>
+          <span class="lang-zh">{c.contact.zh.cvZh}</span>
         </a>
         <a href={c.contact.en.github} target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-white/15 bg-white/5 hover:bg-white/10 transition-colors text-sm text-slate-200">
           <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.5 5.73.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.56-.29-5.26-1.28-5.26-5.7 0-1.26.45-2.29 1.19-3.1-.12-.3-.52-1.47.11-3.07 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.78 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.6.24 2.77.12 3.07.74.81 1.18 1.84 1.18 3.1 0 4.43-2.7 5.41-5.27 5.69.41.36.78 1.06.78 2.13v3.16c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5Z"/></svg>
