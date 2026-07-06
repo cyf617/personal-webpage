@@ -280,7 +280,7 @@ export const content = {
       items: [
         {
           company: "KNQ",
-          role: "AI Data Analyst / Prompt Engineer",
+          role: "AI Data Engineer",
           date: "Mar 2026 — Present",
           location: "Beijing, China",
           detail: [
@@ -297,7 +297,7 @@ export const content = {
       items: [
         {
           company: "北京麒纪智能科技有限公司",
-          role: "AI 数据分析师 / Prompt Engineer",
+          role: "AI 数据工程师",
           date: "2026 年 3 月 — 至今",
           location: "中国 · 北京",
           detail: [
