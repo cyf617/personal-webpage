@@ -1,0 +1,66 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { content as c } from "../data/content";
+---
+
+<Layout current="/research" title="Research — Yifan Chen" description="Research projects of Yifan Chen — AI, transportation, sports AI and trustworthy machine learning.">
+  <section class="page-section">
+    <div class="reveal">
+      <p class="section-siglum">
+        <span class="lang-en">§3 Research</span>
+        <span class="lang-zh">§3 项目</span>
+      </p>
+      <h1 class="section-title">
+        <span class="lang-en">{c.research.en.heading}</span>
+        <span class="lang-zh">{c.research.zh.heading}</span>
+      </h1>
+      <p class="about-bio" style="margin-bottom: 2.5rem;">
+        <span class="lang-en">{c.research.en.subheading}</span>
+        <span class="lang-zh">{c.research.zh.subheading}</span>
+      </p>
+    </div>
+
+    {c.research.en.items.map((_, i) => {
+      const en = c.research.en.items[i];
+      const zh = c.research.zh.items[i];
+      return (
+        <article class="project-card reveal">
+          <div class="project-header">
+            <h2 class="project-title">
+              <span class="lang-en">{en.title}</span>
+              <span class="lang-zh">{zh.title}</span>
+            </h2>
+            <span class="project-date">
+              <span class="lang-en">{en.date}</span>
+              <span class="lang-zh">{zh.date}</span>
+            </span>
+          </div>
+          <p class="project-role">
+            <span class="lang-en">{en.role}</span>
+            <span class="lang-zh">{zh.role}</span>
+          </p>
+          <p class="project-summary">
+            <span class="lang-en">{en.summary}</span>
+            <span class="lang-zh">{zh.summary}</span>
+          </p>
+          <ul class="project-bullets">
+            {en.bullets.map((_, j) => (
+              <li class="project-bullet">
+                <span class="lang-en">{en.bullets[j]}</span>
+                <span class="lang-zh">{zh.bullets[j]}</span>
+              </li>
+            ))}
+          </ul>
+          <div class="project-tags">
+            {en.tags.map((_, j) => (
+              <span class="project-tag">
+                <span class="lang-en">{en.tags[j]}</span>
+                <span class="lang-zh">{zh.tags[j]}</span>
+              </span>
+            ))}
+          </div>
+        </article>
+      );
+    })}
+  </section>
+</Layout>

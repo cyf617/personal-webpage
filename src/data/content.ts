@@ -18,7 +18,7 @@
 export const content = {
 
   // ┌──────────────────────────────────────────────────────
-  // │ ① 顶部导航栏文字(点击跳到对应板块)
+  // │ ① 顶部导航栏文字(点击跳到对应页面)
   // └──────────────────────────────────────────────────────
   nav: {
     en: { about: "About", research: "Projects", education: "Education", experience: "Experience", skills: "Skills", contact: "Contact" },
@@ -26,57 +26,55 @@ export const content = {
   },
 
   // ┌──────────────────────────────────────────────────────
-  // │ ② 首屏 Hero 区(打开网站第一眼看到的大字)
+  // │ ② 首页(Home) — 简洁名片,第一眼看到的内容
   // └──────────────────────────────────────────────────────
-  hero: {
+  home: {
     en: {
-      greet: "// welcome",                                   // 名字上面那行小字
-      name: "Yifan Chen",                                    // 大标题(英文名)
-      title: "AI Data Analyst · Complex Mobility Systems · Trustworthy AI",   // 一句话身份
-      tagline: "Exploring AI and data science, and applying them to transportation, sports, and multimodal content scenarios.", // 详细介绍一句
-      location: "Beijing · London · Zhengzhou",
-      cta1: "Contact Me",                                    // 第一个按钮文字
-      cta2: "Download CV",                                   // 第二个按钮文字
+      name: "Yifan Chen (Evan)",                                     
+      title: "AI Data Science & Development · Intelligent Transport Systems · Trustworthy AI",   
+      tagline: "I am passionate about exploring the intersection of AI and data science, with a focus on building reliable, intelligent solutions for transportation and sports.", 
+      cta: "Get in touch",                                     
+      downloadCV: "CV (EN)",                                   
+      downloadCVZh: "CV (ZH)",                                 
     },
     zh: {
-      greet: "// 你好",
       name: "陈奕帆",
-      title: "AI 数据分析 · 复杂交通系统 · 可信 AI",
-      tagline: "探索AI与数据科学，并尝试将他们应用到交通、体育等多模态内容场景中。",
-      location: "北京 · 伦敦 · 郑州",
-      cta1: "联系我",
-      cta2: "下载简历",
+      title: "AI 数据科学与开发 · 智能交通系统 · 可信 AI",
+      tagline: "我热衷于探索人工智能与数据科学的前沿，致力于为交通和体育等真实场景构建可靠、智能的 AI 解决方案。",
+      cta: "联系我",
+      downloadCV: "英文简历",
+      downloadCVZh: "中文简历",
     },
   },
 
   // ┌──────────────────────────────────────────────────────
   // │ ③ About 板块(关于我)
   // │   body 是数组,每个字符串是一段话。想加段落?在数组里加一行字符串。
-  // │   interests 是首屏底部的小标签(研究兴趣)
+  // │   interests 是首页底部的兴趣标签(显示在 Home 页)
   // └──────────────────────────────────────────────────────
   about: {
     en: {
       heading: "About",
       body: [
-        "MSc in Transport and Data Science from Imperial College London; BSc in Applied Mathematics from Xi’an Jiaotong-Liverpool University. I explore multimodal AI and data science with a focus on making AI outputs more reliable, interpretable, and actionable.",
-        "My core interests are AI data analysis, trustworthy AI in complex mobility systems, and AI for sports content and event understanding. I have rich experience in turning raw spatio-temporal data, event text, commentary corpora, audio snippets into data assets that are trainable, evaluable, and explainable.",
-        "Recent work spans AI clipping, automated commentary, and audio-generation data pipelines across multiple sports; diffusion-based car-following trajectory prediction; large-scale truck GPS analytics for a World Bank project; and explainable ML for transportation and emissions policy analysis.",
+        "I am currently working as an AI Data Science and Development Intern at KNQ. Soon, I will be starting my PhD journey, focusing on the application of Large Language Models (LLMs) and Agentic AI in complex transportation systems. Previously, I earned my MSc in Transport and Data Science from Imperial College London, and a BSc in Applied Mathematics from Xi'an Jiaotong-Liverpool University.",
+        "My core research interests include Trustworthy AI, GenAI for Transport, Intelligent Transport Systems (ITS), and AI for Sports. I have extensive experience transforming complex, real-world data—ranging from spatio-temporal trajectories to multimodal sports audio-visual and commentary data—into high-quality, evaluable data assets that power intelligent models.",
+        "Recently, my work has spanned several diverse applications. I have developed data pipelines for AI-driven sports clipping and automated commentary, engineered diffusion-based models for car-following trajectory prediction, and conducted large-scale GPS analytics for a World Bank logistics project. Across these domains, my goal is to bridge the gap between advanced machine learning and real-world decision-making.",
       ],
-      interests: ["AI Data Analysis", "Complex Mobility Systems", "Trustworthy AI", "Sports AI"],
+      interests: ["Trustworthy AI", "GenAI for Transport", "Intelligent Transport System", "AI for Sports"],
     },
     zh: {
       heading: "关于我",
       body: [
-        "帝国理工学院交通与数据科学硕士、西交利物浦大学数学与应用数学本科，希望在多模态AI、数据科学等领域探索，让 AI 输出更可靠、更可解释、更能落地。",
-        "目前核心方向是 AI 数据分析、可信AI在复杂交通系统的应用，以及 AI 在体育内容和赛事理解中的应用。我有丰富的将原始时空数据、文本语料数据、音频片段数据等整理成可训练、评估、解释的数据资产的经验。",
-        "近期工作覆盖多体育场景下的 AI 剪辑、自动解说和音频生成数据流程，基于扩散模型的跟车轨迹预测，面向世界银行项目的大规模卡车 GPS 轨迹分析，以及可解释机器学习驱动的交通与排放政策分析等。",
+        "我目前在麒纪科技（KNQ）担任 AI 数据科学与开发实习生，并即将作为博士生入学，深入研究大语言模型（LLMs）与智能体（Agentic AI）在复杂交通系统中的应用。此前，我分别在帝国理工学院（Imperial College London）和西交利物浦大学获得了交通与数据科学硕士学位及数学与应用数学学士学位。",
+        "我的核心研究兴趣包括可信 AI (Trustworthy AI)、生成式 AI 与交通 (GenAI for Transport)、智能交通系统 (Intelligent Transport Systems) 以及体育 AI (AI for Sports)。我擅长处理复杂多源的现实数据——从时空轨迹到多模态体育音视频及解说语料数据，并拥有丰富的经验将它们转化为可训练、可评估的高质量数据资产。",
+        "在近期的项目中，我参与了多个富有挑战性的落地工作，包括：搭建多体育场景下的 AI 剪辑与自动解说数据管线，设计基于扩散模型的车辆轨迹预测架构，以及为世界银行项目处理和分析千万级的大规模卡车 GPS 轨迹。在这些实践中，我始终致力于在先进的机器学习算法与现实业务决策之间搭建桥梁。",
       ],
-      interests: ["AI 数据分析", "复杂交通系统", "可信 AI", "体育 AI"],
+      interests: ["可信 AI", "生成式 AI 与交通", "智能交通系统", "体育 AI"],
     },
   },
 
   // ┌──────────────────────────────────────────────────────
-  // │ ④ 研究项目板块 ⭐ 最常改的地方
+  // │ ④ 研究项目板块(Research 页)
   // │
   // │ 想加一个新项目:复制下面任意一整个 { title: ..., tags: [...] } 块,
   // │ 粘贴在 items 数组里,改掉内容即可。en 和 zh 里都要加,保证索引对应。
@@ -86,7 +84,7 @@ export const content = {
   // │   role     你的角色 / 所属机构(会显示成小蓝字)
   // │   date     时间段
   // │   summary  一句话概述
-  // │   bullets  成果要点(数组,每条是一行,自动加 ▹ 符号)
+  // │   bullets  成果要点(数组,每条是一行)
   // │   tags     底部的技术标签(数组)
   // └──────────────────────────────────────────────────────
   research: {
@@ -94,21 +92,6 @@ export const content = {
       heading: "Selected Projects",
       subheading: "Applied AI, data analysis and research across sports, mobility and trustworthy decision support.",
       items: [
-        // ─── 项目 0 ───
-        // {
-        //   title: "Sports AI Data & Evaluation Pipelines for Basketball and Horse Racing",
-        //   role: "AI Data Analyst / Prompt Engineer · Beijing Qiji Technology",
-        //   date: "Mar 2026 — Present",
-        //   summary:
-        //     "Built structured data and evaluation workflows for AI clipping, automatic commentary, audio generation and sports-content understanding.",
-        //   bullets: [
-        //     "Integrated event labels, commentary corpora, audio clips and model outputs into queryable PostgreSQL / SQLite datasets.",
-        //     "Designed prompt sample libraries, evaluation cases and error taxonomies to improve generation quality, diversity and stability.",
-        //     "Analysed historical match and racing commentary with Python to surface semantic style patterns for product and model iteration.",
-        //   ],
-        //   tags: ["Sports AI", "Data Engineering", "Prompt Evaluation", "ASR / TTS"],
-        // },
-        // ─── 项目 1 ───
         {
           title: "Personalised Car-following Modelling using Diffusion-based Model",
           role: "MSc Dissertation · Imperial College London",
@@ -122,7 +105,6 @@ export const content = {
           ],
           tags: ["PyTorch", "Diffusion", "Transformer", "nuPlan"],
         },
-        // ─── 项目 2 ───
         {
           title: "Big Data & AI Logistics Model for First-Last Mile — India",
           role: "Project Leader · In collaboration with World Bank Group",
@@ -136,7 +118,6 @@ export const content = {
           ],
           tags: ["GIS", "Classification", "World Bank", "Python"],
         },
-        // ─── 项目 3 ───
         {
           title: "ML for Policy: Reducing CO₂ Emissions in the Canadian Auto Sector",
           role: "Project Leader · Imperial College London",
@@ -149,7 +130,6 @@ export const content = {
           ],
           tags: ["SHAP", "Trustworthy AI", "Policy", "Regression"],
         },
-        // ─── 项目 4 ───
         {
           title: "A Topological Method in Music Recognition Algorithms",
           role: "Undergraduate Final Year Project · First-Class",
@@ -163,28 +143,12 @@ export const content = {
           ],
           tags: ["Persistent Homology", "TDA", "Audio", "Mathematics"],
         },
-        // 想加新项目?在这里粘贴一个新的 { ... }, 块,结构照抄上面任意一个
       ],
     },
     zh: {
       heading: "项目经历",
       subheading: "覆盖体育 AI、复杂交通系统、可信 AI 与数据分析的代表性项目。",
       items: [
-        // ─── 项目 0 ───
-        // {
-        //   title: "篮球与赛马场景的体育 AI 数据与评估流程",
-        //   role: "AI 数据分析师 / Prompt Engineer · 北京麒纪科技",
-        //   date: "2026 年 3 月 — 至今",
-        //   summary:
-        //     "围绕 AI 剪辑、自动解说、音频生成和赛事理解，构建结构化数据、Prompt 样本库、评估样例和错误案例库。",
-        //   bullets: [
-        //     "整合赛事文本、事件标签、解说语料、音频片段和模型输出，使用 PostgreSQL / SQLite 维护可检索、可评估的数据关系。",
-        //     "迭代 Prompt 样本库、评估样例与错误案例库，提升生成内容在准确性、多样性、稳定性和风格匹配上的表现。",
-        //     "使用 Python 对历史赛事与解说文本进行清洗、特征提取、聚类分析和语义风格分析，为产品和算法迭代提供依据。",
-        //   ],
-        //   tags: ["体育 AI", "数据工程", "Prompt 评估", "ASR / TTS"],
-        // },
-        // ─── 项目 1(对应英文项目 1,顺序必须一致) ───
         {
           title: "基于扩散模型的个性化跟车建模",
           role: "硕士毕业论文 · 帝国理工学院",
@@ -198,7 +162,6 @@ export const content = {
           ],
           tags: ["PyTorch", "Diffusion", "Transformer", "nuPlan"],
         },
-        // ─── 项目 2 ───
         {
           title: "印度首末公里物流大数据与 AI 模型",
           role: "项目组长 · 与世界银行 (World Bank Group) 合作",
@@ -212,7 +175,6 @@ export const content = {
           ],
           tags: ["GIS", "分类", "世界银行", "Python"],
         },
-        // ─── 项目 3 ───
         {
           title: "可解释机器学习驱动的加拿大汽车行业 CO₂ 减排政策",
           role: "项目组长 · 帝国理工学院",
@@ -225,7 +187,6 @@ export const content = {
           ],
           tags: ["SHAP", "可信 AI", "政策", "回归"],
         },
-        // ─── 项目 4 ───
         {
           title: "拓扑方法在音乐识别算法中的应用",
           role: "本科毕业设计 · 一等",
@@ -239,13 +200,12 @@ export const content = {
           ],
           tags: ["持续同调", "TDA", "音频", "数学"],
         },
-        // 想加新项目?在这里粘贴新的 { ... }, 块(记得英文那边也要加同样位置的一块)
       ],
     },
   },
 
   // ┌──────────────────────────────────────────────────────
-  // │ ⑤ 教育经历(时间线样式)
+  // │ ⑤ 教育经历(Education 页 — 时间线样式)
   // │
   // │ 字段:
   // │   school    学校名
@@ -258,7 +218,6 @@ export const content = {
     en: {
       heading: "Education",
       items: [
-        // ─── 学历 1(最近的写最上面) ───
         {
           school: "Imperial College London",
           degree: "MSc in Transport with Data Science",
@@ -270,7 +229,6 @@ export const content = {
             "Dissertation: Personalised Car-following Modelling using Diffusion-based Model.",
           ],
         },
-        // ─── 学历 2 ───
         {
           school: "Xi'an Jiaotong-Liverpool University",
           degree: "BSc in Applied Mathematics",
@@ -314,14 +272,14 @@ export const content = {
   },
 
   // ┌──────────────────────────────────────────────────────
-  // │ ⑥ 实习 / 工作经历(结构和 education 一样)
+  // │ ⑥ 实习 / 工作经历(Experience 页 — 和 Education 相同时间线样式)
   // └──────────────────────────────────────────────────────
   experience: {
     en: {
-      heading: "Experience",
+      heading: "Internship Experience",
       items: [
         {
-          company: "Beijing KNQ Technology Co., Ltd.",
+          company: "KNQ",
           role: "AI Data Analyst / Prompt Engineer",
           date: "Mar 2026 — Present",
           location: "Beijing, China",
@@ -332,35 +290,13 @@ export const content = {
             "Analysed commentary style and model outputs across accuracy, consistency, style match and usability, feeding results back to algorithm and product teams.",
           ],
         },
-        {
-          company: "Anhui Zhinong Shidai Information Technology Co., Ltd.",
-          role: "Data Mining / Data Analyst Intern",
-          date: "Jun 2024 — Sep 2024",
-          location: "Zhengzhou, China",
-          detail: [
-            "Processed multi-source spatio-temporal agricultural data, including historical yield, satellite remote sensing, meteorological and soil datasets.",
-            "Extracted crop-growth and environmental-stress features from remote-sensing imagery and weather time series.",
-            "Built Random Forest / XGBoost regression models on held-out data using time-series cross-validation and hyperparameter optimisation.",
-          ],
-        },
-        {
-          company: "Ying'anxin Equity Investment Fund Management Co., Ltd.",
-          role: "Business Data Analyst Intern",
-          date: "Jun 2022 — Sep 2022",
-          location: "Zhengzhou, China",
-          detail: [
-            "Cleaned and integrated order, user-behaviour, community-operator and category-sales data for community group-buying analysis.",
-            "Built conversion, repurchase, average-order-value and fulfilment-cost features to support promotion and category decisions.",
-            "Used Python and scikit-learn to model price sensitivity and retention, improving operational decision efficiency.",
-          ],
-        },
       ],
     },
     zh: {
-      heading: "工作与实习经历",
+      heading: "实习经历",
       items: [
         {
-          company: "北京麒纪科技有限公司",
+          company: "北京麒纪智能科技有限公司",
           role: "AI 数据分析师 / Prompt Engineer",
           date: "2026 年 3 月 — 至今",
           location: "中国 · 北京",
@@ -371,37 +307,15 @@ export const content = {
             "结合 ASR / TTS 等模型输出，从准确性、一致性、风格匹配度和可用性等维度分析模型表现，并反馈给算法与产品团队。",
           ],
         },
-        {
-          company: "安徽智农时代信息科技有限公司",
-          role: "数据挖掘 / 数据分析实习生",
-          date: "2024 年 6 月 — 9 月",
-          location: "中国 · 郑州",
-          detail: [
-            "处理农业产量预测中的多源时空数据，整合历史产量、多时序卫星遥感、高精度气象及土壤属性数据。",
-            "基于遥感影像与气象时间序列提取作物生长阶段特征，包括关键物候期、累积降水、温度变化和高温胁迫指数。",
-            "使用 Random Forest、XGBoost 等机器学习回归模型进行产量预测，通过时序交叉验证和超参数调优降低过拟合风险。",
-          ],
-        },
-        {
-          company: "珠海横琴盈安信股权投资基金管理有限公司",
-          role: "商业数据分析实习生",
-          date: "2022 年 6 月 — 9 月",
-          location: "中国 · 郑州",
-          detail: [
-            "围绕订单数据、用户行为、团长运营及品类销售数据进行清洗、整合与指标构建，支持识别高复购品类与重点运营社区。",
-            "构建用户转化、复购频率、客单价、履约成本、社区渗透密度和促销敏感度等分析特征。",
-            "使用 Python 与 scikit-learn 建立价格敏感度和用户留存分析模型，模拟补贴与履约费策略影响，推动运营决策效率提升。",
-          ],
-        },
       ],
     },
   },
 
   // ┌──────────────────────────────────────────────────────
-  // │ ⑦ 技能板块
+  // │ ⑦ 技能板块(显示在 About 页)
   // │
   // │ groups 是技能分组,每组一个 { label, items } 对象。
-  // │ items 里每个字符串会渲染成一个小标签。
+  // │ items 里每个字符串会展示在页面上。
   // │ 想加分组 → 在 groups 数组里加新对象。
   // │ 想加某项技能 → 在 items 数组里加字符串。
   // └──────────────────────────────────────────────────────
@@ -429,7 +343,7 @@ export const content = {
   },
 
   // ┌──────────────────────────────────────────────────────
-  // │ ⑧ 联系方式板块
+  // │ ⑧ 联系方式板块(显示在 About 页底部)
   // │   email 和 phone 会显示在页面上
   // │   github 改了会影响 GitHub 按钮链接
   // │   想加 LinkedIn / Google Scholar?告诉我帮你加
@@ -437,7 +351,7 @@ export const content = {
   contact: {
     en: {
       heading: "Get in touch",
-      subheading: "Open to AI data analysis, transportation AI, trustworthy AI evaluation and sports AI opportunities.",
+      subheading: "I am always open to discussing new opportunities, collaborations, or research ideas related to Trustworthy AI, Intelligent Transport Systems, and Sports AI. Feel free to reach out!",
       email: "yifanchen0726@gmail.com",
       phone: "+86 186 3816 8007",
       github: "https://github.com/cyf617",
@@ -446,7 +360,7 @@ export const content = {
     },
     zh: {
       heading: "联系我",
-      subheading: "欢迎交流 AI 数据分析、交通 AI、可信 AI 和体育 AI 方向的研究、产品与岗位机会。",
+      subheading: "我对可信 AI、智能交通以及体育 AI 领域的研究、产品与岗位机会充满热情。非常欢迎交流合作或探讨新的想法，随时联系我！",
       email: "yifanchen0726@gmail.com",
       phone: "+86 186 3816 8007",
       github: "https://github.com/cyf617",
@@ -456,10 +370,10 @@ export const content = {
   },
 
   // ┌──────────────────────────────────────────────────────
-  // │ ⑨ 底部 Footer
+  // │ ⑨ 底部 Footer(每个页面底部都会显示)
   // └──────────────────────────────────────────────────────
   footer: {
-    en: { built: "Built with Astro & Tailwind · Dark Tech Edition", rights: "© 2026 Yifan Chen" },
-    zh: { built: "使用 Astro 与 Tailwind 构建 · 深色科技主题", rights: "© 2026 陈奕帆" },
+    en: { built: "Built with Astro & Tailwind", rights: "© 2026 Yifan Chen (Evan)" },
+    zh: { built: "使用 Astro 与 Tailwind 构建", rights: "© 2026 陈奕帆" },
   },
 };
