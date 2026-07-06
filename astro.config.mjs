@@ -11,10 +11,10 @@ const isGithubPages = process.env.DEPLOY_TARGET === 'github';
 // https://astro.build/config
 export default defineConfig({
   site: isGithubPages
-    ? 'https://cyf617.top'
-    : 'https://personal-webpage.yifanchen0726.workers.dev',
+    ? 'https://cyf617.github.io'
+    : 'https://cyf617.top',
 
-  base: '/',
+  base: isGithubPages ? '/personal-webpage/' : '/',
 
   vite: {
     plugins: [tailwindcss()]
