@@ -32,7 +32,7 @@ export const content = {
     en: {
       name: "Yifan Chen (Evan)",                                     
       title: "AI Data Science & Development · Intelligent Transport Systems · Trustworthy AI",   
-      tagline: "I am passionate about exploring the intersection of AI and data science, with a focus on building reliable, intelligent solutions for transportation and sports.", 
+      tagline: "I am passionate about exploring the frontiers of AI and data science, dedicated to building reliable, intelligent AI solutions for real-world scenarios like transportation and sports.",
       cta: "Get in touch",                                     
       downloadCV: "CV (EN)",                                   
       downloadCVZh: "CV (ZH)",                                 
@@ -40,7 +40,7 @@ export const content = {
     zh: {
       name: "陈奕帆",
       title: "AI 数据科学与开发 · 智能交通系统 · 可信 AI",
-      tagline: "我热衷于探索人工智能与数据科学的前沿，致力于为交通和体育等真实场景构建可靠、智能的 AI 解决方案。",
+      tagline: "我热衷于探索人工智能与数据科学的前沿方向，致力于为交通和体育等真实场景构建可靠、智能的 AI 解决方案。",
       cta: "联系我",
       downloadCV: "英文简历",
       downloadCVZh: "中文简历",
@@ -56,7 +56,7 @@ export const content = {
     en: {
       heading: "About",
       body: [
-        "I am currently working as an AI Data Science and Development Intern at KNQ. Soon, I will be starting my PhD journey, focusing on the application of Large Language Models (LLMs) and Agentic AI in complex transportation systems. Previously, I earned my MSc in Transport and Data Science from Imperial College London, and a BSc in Applied Mathematics from Xi'an Jiaotong-Liverpool University.",
+        "I am currently working as an AI Data Engineering Intern at KNQ, exploring how to build AI solutions for the sports domain. At the same time, I will soon be starting my PhD, where I will delve into the application of Large Language Models (LLMs) and Agentic AI in complex transportation systems. Previously, I earned my MSc in Transport and Data Science from Imperial College London, and a BSc in Applied Mathematics from Xi'an Jiaotong-Liverpool University.",
         "My core research interests include Trustworthy AI, GenAI for Transport, Intelligent Transport Systems (ITS), and AI for Sports. I have extensive experience transforming complex, real-world data—ranging from spatio-temporal trajectories to multimodal sports audio-visual and commentary data—into high-quality, evaluable data assets that power intelligent models.",
         "Recently, my work has spanned several diverse applications. I have developed data pipelines for AI-driven sports clipping and automated commentary, engineered diffusion-based models for car-following trajectory prediction, and conducted large-scale GPS analytics for a World Bank logistics project. Across these domains, my goal is to bridge the gap between advanced machine learning and real-world decision-making.",
       ],
@@ -65,7 +65,7 @@ export const content = {
     zh: {
       heading: "关于我",
       body: [
-        "我目前在麒纪科技（KNQ）担任 AI 数据科学与开发实习生，并即将作为博士生入学，深入研究大语言模型（LLMs）与智能体（Agentic AI）在复杂交通系统中的应用。此前，我分别在帝国理工学院（Imperial College London）和西交利物浦大学获得了交通与数据科学硕士学位及数学与应用数学学士学位。",
+        "我目前在麒纪科技（KNQ）担任 AI 数据工程实习生，探索如何搭建体育方向的 AI 解决方案。同时也即将成为一名博士生，在博士阶段我将深入研究大语言模型（LLMs）与智能体（Agentic AI）在复杂交通系统中的应用。此前，我分别在帝国理工学院（Imperial College London）和西交利物浦大学获得了交通与数据科学硕士学位及数学与应用数学学士学位。",
         "我的核心研究兴趣包括可信 AI (Trustworthy AI)、生成式 AI 与交通 (GenAI for Transport)、智能交通系统 (Intelligent Transport Systems) 以及体育 AI (AI for Sports)。我擅长处理复杂多源的现实数据——从时空轨迹到多模态体育音视频及解说语料数据，并拥有丰富的经验将它们转化为可训练、可评估的高质量数据资产。",
         "在近期的项目中，我参与了多个富有挑战性的落地工作，包括：搭建多体育场景下的 AI 剪辑与自动解说数据管线，设计基于扩散模型的车辆轨迹预测架构，以及为世界银行项目处理和分析千万级的大规模卡车 GPS 轨迹。在这些实践中，我始终致力于在先进的机器学习算法与现实业务决策之间搭建桥梁。",
       ],
