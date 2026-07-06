@@ -1,0 +1,76 @@
+---
+import { content } from "../data/content";
+
+const pages = [
+  { href: "/experience", labelEn: "Internships", labelZh: "实习" },
+  { href: "/research", labelEn: "Projects", labelZh: "项目" },
+];
+
+const { current } = Astro.props;
+const BASE = import.meta.env.BASE_URL;
+const base = BASE.replace(/\/+$/, "");
+const href = (path) => path === "/" ? (base || "/") : `${base}${path}`;
+---
+
+<header class="nav">
+  <nav class="nav-inner">
+    <a href={href("/")} class="nav-logo">
+      Evan
+    </a>
+    <ul class="nav-links">
+      {pages.map((p) => (
+        <li>
+          <a
+            href={href(p.href)}
+            class:list={{
+              "nav-link": true,
+              "nav-link--active": current === p.href,
+            }}
+          >
+            <span class="lang-en">{p.labelEn}</span>
+            <span class="lang-zh">{p.labelZh}</span>
+          </a>
+        </li>
+      ))}
+      <li class="nav-lang-item">
+        <button data-lang-toggle class="nav-lang-btn" aria-label="Toggle language">
+          <span class="lang-en">中文</span>
+          <span class="lang-zh">EN</span>
+        </button>
+      </li>
+    </ul>
+    <button id="nav-mobile-toggle" class="nav-mobile-toggle" aria-label="Menu" style="margin-left: auto;">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <line x1="4" y1="7" x2="20" y2="7" />
+        <line x1="4" y1="12" x2="20" y2="12" />
+        <line x1="4" y1="17" x2="20" y2="17" />
+      </svg>
+    </button>
+  </nav>
+</header>
+
+<div id="nav-mobile-overlay" class="nav-mobile-overlay"></div>
+<div id="nav-mobile-panel" class="nav-mobile-panel">
+  <ul class="nav-mobile-links">
+    {pages.map((p) => (
+      <li>
+        <a
+          href={href(p.href)}
+          class:list={{
+            "nav-mobile-link": true,
+            "nav-mobile-link--active": current === p.href,
+          }}
+        >
+          <span class="lang-en">{p.labelEn}</span>
+          <span class="lang-zh">{p.labelZh}</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+  <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--color-rule-light);">
+    <button data-lang-toggle class="nav-lang-btn" aria-label="Toggle language" style="width: 100%; text-align: center;">
+      <span class="lang-en">中文</span>
+      <span class="lang-zh">EN</span>
+    </button>
+  </div>
+</div>

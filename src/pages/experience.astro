@@ -1,0 +1,54 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { content as c } from "../data/content";
+---
+
+<Layout current="/experience" title="Experience — Yifan Chen" description="Professional experience of Yifan Chen — AI data analyst, data mining and business data analysis.">
+  <section class="page-section">
+    <div class="reveal">
+      <p class="section-siglum">
+        <span class="lang-en">§2 Experience</span>
+        <span class="lang-zh">§2 经历</span>
+      </p>
+      <h1 class="section-title">
+        <span class="lang-en">{c.experience.en.heading}</span>
+        <span class="lang-zh">{c.experience.zh.heading}</span>
+      </h1>
+    </div>
+
+    <div class="timeline">
+      {c.experience.en.items.map((_, i) => {
+        const en = c.experience.en.items[i];
+        const zh = c.experience.zh.items[i];
+        return (
+          <div class="timeline-item reveal">
+            <span class="timeline-dot"></span>
+            <div class="timeline-line"></div>
+            <div class="timeline-header">
+              <h2 class="timeline-title">
+                <span class="lang-en">{en.company}</span>
+                <span class="lang-zh">{zh.company}</span>
+              </h2>
+              <span class="timeline-date">
+                <span class="lang-en">{en.date}</span>
+                <span class="lang-zh">{zh.date}</span>
+              </span>
+            </div>
+            <p class="timeline-subtitle">
+              <span class="lang-en">{en.role} — {en.location}</span>
+              <span class="lang-zh">{zh.role} — {zh.location}</span>
+            </p>
+            <ul class="timeline-details">
+              {en.detail.map((_, j) => (
+                <li class="timeline-detail-item">
+                  <span class="lang-en">{en.detail[j]}</span>
+                  <span class="lang-zh">{zh.detail[j]}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        );
+      })}
+    </div>
+  </section>
+</Layout>

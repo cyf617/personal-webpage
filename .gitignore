@@ -31,3 +31,4 @@ pnpm-debug.log*
 
 # Agent memory files
 AGENT.md
+.gitnexus
