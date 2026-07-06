@@ -410,6 +410,136 @@ h1, h2, h3, h4, h5 {
   flex-direction: column;
   gap: 0.5rem;
 }
+.contact-link {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* ── Contact Page: Hobbies & Galleries ── */
+.hobbies-heading {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1rem;
+}
+.gallery--photos {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+.gallery-item {
+  aspect-ratio: 4 / 3;
+  background: #f7f7f7;
+  border: 1px dashed var(--color-rule);
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: var(--color-ink-muted);
+  font-size: 0.85rem;
+  text-align: center;
+  padding: 1rem;
+  transition: border-color .2s ease, color .2s ease;
+}
+.gallery-item:hover {
+  border-color: var(--color-ink-muted);
+  color: var(--color-ink-secondary);
+}
+.gallery-item--album {
+  aspect-ratio: 1 / 1;
+}
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 6px;
+}
+/* 有真实图片时去掉占位框的 padding 和虚线边框,让图片干净填满 */
+.gallery-item:has(img) {
+  padding: 0;
+  border: none;
+  background: transparent;
+}
+
+/* ── Album card (click cover to play) ── */
+.album-card {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border: 1px solid var(--color-rule);
+  border-radius: 6px;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+  background: #000;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+}
+.album-card--noaudio {
+  cursor: default;
+  background: #f7f7f7;
+}
+.album-card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.album-play-icon,
+.album-pause-icon {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.28);
+  color: #fff;
+  opacity: 0;
+  transition: opacity .2s ease;
+  pointer-events: none;
+}
+.album-play-icon svg,
+.album-pause-icon svg {
+  width: 32px;
+  height: 32px;
+}
+.album-card:hover .album-play-icon,
+.album-card.is-playing .album-pause-icon {
+  opacity: 1;
+}
+.album-card.is-playing .album-play-icon {
+  opacity: 0;
+}
+.album-card.is-playing {
+  box-shadow: 0 0 0 2px var(--color-link);
+}
+.album-meta {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0.5rem 0.6rem;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.65));
+  color: #fff;
+  font-size: 0.78rem;
+  line-height: 1.3;
+  pointer-events: none;
+}
+.anthem {
+  text-align: center;
+  font-size: 1.15rem;
+  font-style: italic;
+  letter-spacing: 0.02em;
+  color: var(--color-ink-secondary);
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--color-rule);
+}
 
 /* ── Bilingual ── */
 html[data-lang="en"] .lang-zh { display: none !important; }

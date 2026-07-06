@@ -1,0 +1,180 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { content as c } from "../data/content";
+const BASE = import.meta.env.BASE_URL;
+const cvEN = `${BASE}/cv/Yifan_Chen_CV_EN.pdf`.replace(/\/+/g, "/");
+const cvZH = `${BASE}/cv/Yifan_Chen_CV_ZH.pdf`.replace(/\/+/g, "/");
+---
+
+<!--
+  想换成真实内容?
+  ▸ 观赛照片:在 src/data/content.ts 的 hobbies.liverpoolPhotos 里把空字符串换成图片路径,
+    例如 "/matchday1.jpg"(图片放 public/ 下),就会自动显示图片而不是占位框。
+  ▸ 专辑:在 hobbies.albums 里填每个对象的 cover / audioSrc / title / artist。
+    cover    = 封面图路径,例如 "/covers/album1.jpg"
+    audioSrc = 音频路径,例如 "/audio/song1.mp3"(文件放 public/ 下)
+    填好后点击封面即可在本页内播放/暂停,同时只会播一首。
+-->
+<Layout current="/others" title="Others — Yifan Chen" description="Hobbies and interests of Yifan Chen — football, basketball, Liverpool FC, R&B and Soul music.">
+  <section class="page-section">
+    <div class="reveal">
+      <p class="section-siglum">
+        <span class="lang-en">§5 Others</span>
+        <span class="lang-zh">§5 其他</span>
+      </p>
+      <h1 class="section-title">
+        <span class="lang-en">{c.hobbies.en.pageHeading}</span>
+        <span class="lang-zh">{c.hobbies.zh.pageHeading}</span>
+      </h1>
+    </div>
+
+    <!-- Hobbies intro -->
+    <div class="reveal">
+      <h2 class="hobbies-heading">
+        <span class="lang-en">{c.hobbies.en.heading}</span>
+        <span class="lang-zh">{c.hobbies.zh.heading}</span>
+      </h2>
+      <p class="about-bio">
+        <span class="lang-en">{c.hobbies.en.body}</span>
+        <span class="lang-zh">{c.hobbies.zh.body}</span>
+      </p>
+    </div>
+
+    <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--color-rule);" />
+
+    <!-- Matchday photos placeholders -->
+    <div class="reveal">
+      <h2 class="hobbies-heading" style="margin-bottom: 1.5rem;">
+        <span class="lang-en">{c.hobbies.en.liverpoolHeading}</span>
+        <span class="lang-zh">{c.hobbies.zh.liverpoolHeading}</span>
+      </h2>
+      <div class="gallery gallery--photos">
+        {c.hobbies.liverpoolPhotos.map((photo) => (
+          photo ? (
+            <div class="gallery-item gallery-item--photo">
+              <img src={`${BASE}${photo}`.replace(/\/+/g, "/")} alt="Matchday" />
+            </div>
+          ) : (
+            <div class="gallery-item gallery-item--photo">
+              <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="3" y="3" width="18" height="18" rx="2" />
+                <circle cx="9" cy="9" r="2" />
+                <path d="M21 15l-5-5L5 21" />
+              </svg>
+              <span class="lang-en">{c.hobbies.en.photoPlaceholder}</span>
+              <span class="lang-zh">{c.hobbies.zh.photoPlaceholder}</span>
+            </div>
+          )
+        ))}
+      </div>
+    </div>
+
+    <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--color-rule);" />
+
+    <!-- Albums (click cover to play) -->
+    <div class="reveal">
+      <h2 class="hobbies-heading">
+        <span class="lang-en">{c.hobbies.en.albumsHeading}</span>
+        <span class="lang-zh">{c.hobbies.zh.albumsHeading}</span>
+      </h2>
+      <p class="about-bio" style="margin-bottom: 1.5rem;">
+        <span class="lang-en">{c.hobbies.en.albumsCaption}</span>
+        <span class="lang-zh">{c.hobbies.zh.albumsCaption}</span>
+      </p>
+      <div class="gallery">
+        {c.hobbies.albums.map((a) => (
+          a.cover ? (
+            a.audioSrc ? (
+              <button
+                type="button"
+                class="album-card"
+                data-audio={`${BASE}${a.audioSrc}`.replace(/\/+/g, "/")}
+                aria-label={`Play ${a.title} — ${a.artist}`}
+              >
+                <img src={`${BASE}${a.cover}`.replace(/\/+/g, "/")} alt={`${a.title} — ${a.artist}`} />
+                <span class="album-play-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                </span>
+                <span class="album-pause-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+                </span>
+                {(a.title || a.artist) && (
+                  <span class="album-meta">{a.title}{a.artist ? ` — ${a.artist}` : ""}</span>
+                )}
+              </button>
+            ) : (
+              <div class="album-card album-card--noaudio">
+                <img src={`${BASE}${a.cover}`.replace(/\/+/g, "/")} alt={`${a.title} — ${a.artist}`} />
+                {(a.title || a.artist) && (
+                  <span class="album-meta">{a.title}{a.artist ? ` — ${a.artist}` : ""}</span>
+                )}
+              </div>
+            )
+          ) : (
+            <div class="gallery-item gallery-item--album">
+              <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <circle cx="12" cy="12" r="10" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+              <span class="lang-en">{c.hobbies.en.albumPlaceholder}</span>
+              <span class="lang-zh">{c.hobbies.zh.albumPlaceholder}</span>
+            </div>
+          )
+        ))}
+      </div>
+      <audio id="album-audio" preload="none"></audio>
+    </div>
+
+    <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--color-rule);" />
+
+    <!-- Contact (moved from home) -->
+    <div class="reveal">
+      <h2 class="hobbies-heading">
+        <span class="lang-en">{c.contact.en.heading}</span>
+        <span class="lang-zh">{c.contact.zh.heading}</span>
+      </h2>
+      <p class="about-bio" style="margin-bottom: 1rem;">
+        <span class="lang-en">{c.contact.en.subheading}</span>
+        <span class="lang-zh">{c.contact.zh.subheading}</span>
+      </p>
+
+      <div class="contact-links">
+        <a href={`mailto:${c.contact.en.email}`} class="contact-link">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          {c.contact.en.email}
+        </a>
+      </div>
+    </div>
+
+    <!-- Liverpool FC anthem -->
+    <p class="anthem">You'll Never Walk Alone!</p>
+  </section>
+
+  <script is:inline>
+    (function () {
+      const audio = document.getElementById('album-audio');
+      if (!audio) return;
+      const cards = document.querySelectorAll('.album-card[data-audio]');
+      let current = null;
+
+      const setPlaying = (btn, on) => btn.classList.toggle('is-playing', on);
+
+      cards.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          if (current === btn) {
+            if (audio.paused) { audio.play(); } else { audio.pause(); }
+          } else {
+            if (current) setPlaying(current, false);
+            audio.src = btn.dataset.audio;
+            current = btn;
+            audio.play().catch(() => setPlaying(current, false));
+          }
+        });
+      });
+
+      audio.addEventListener('play', () => { if (current) setPlaying(current, true); });
+      audio.addEventListener('pause', () => { if (current) setPlaying(current, false); });
+      audio.addEventListener('ended', () => { if (current) setPlaying(current, false); });
+    })();
+  </script>
+</Layout>

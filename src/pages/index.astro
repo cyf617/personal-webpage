@@ -142,23 +142,5 @@ const cvZH = `${BASE}/cv/Yifan_Chen_CV_ZH.pdf`.replace(/\/+/g, "/");
       })}
     </div>
 
-    <!-- Contact -->
-    <div style="margin-bottom: 2rem;">
-      <h2 class="section-title" style="margin-bottom: 1.5rem;">
-        <span class="lang-en">{c.contact.en.heading}</span>
-        <span class="lang-zh">{c.contact.zh.heading}</span>
-      </h2>
-      <p class="about-bio" style="margin-bottom: 1rem;">
-        <span class="lang-en">{c.contact.en.subheading}</span>
-        <span class="lang-zh">{c.contact.zh.subheading}</span>
-      </p>
-      <div class="contact-links" style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
-        <a href={`mailto:${c.contact.en.email}`} class="contact-link" style="display: flex; align-items: center; gap: 0.4rem;">
-          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          {c.contact.en.email}
-        </a>
-      </div>
-    </div>
-
   </section>
 </Layout>

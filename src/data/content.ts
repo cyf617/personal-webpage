@@ -65,7 +65,7 @@ export const content = {
     zh: {
       heading: "关于我",
       body: [
-        "我目前在麒纪科技（KNQ）担任 AI 数据工程实习生，探索如何搭建体育方向的 AI 解决方案。同时也即将成为一名博士生，在博士阶段我将深入研究大语言模型（LLMs）与智能体（Agentic AI）在复杂交通系统中的应用。此前，我分别在帝国理工学院（Imperial College London）和西交利物浦大学获得了交通与数据科学硕士学位及数学与应用数学学士学位。",
+        "我目前在麒纪科技（KNQ）担任 AI 数据工程实习生，探索如何搭建体育方向的 AI 解决方案。同时即将成为一名博士生，在博士阶段我将深入研究大语言模型（LLMs）与智能体（Agentic AI）在复杂交通系统中的应用。此前，我分别在帝国理工学院（Imperial College London）和西交利物浦大学获得了交通与数据科学硕士学位及数学与应用数学学士学位。",
         "我的核心研究兴趣包括可信 AI (Trustworthy AI)、生成式 AI 与交通 (GenAI for Transport)、智能交通系统 (Intelligent Transport Systems) 以及体育 AI (AI for Sports)。我擅长处理复杂多源的现实数据——从时空轨迹到多模态体育音视频及解说语料数据，并拥有丰富的经验将它们转化为可训练、可评估的高质量数据资产。",
         "在近期的项目中，我参与了多个富有挑战性的落地工作，包括：搭建多体育场景下的 AI 剪辑与自动解说数据管线，设计基于扩散模型的车辆轨迹预测架构，以及为世界银行项目处理和分析千万级的大规模卡车 GPS 轨迹。在这些实践中，我始终致力于在先进的机器学习算法与现实业务决策之间搭建桥梁。",
       ],
@@ -370,7 +370,61 @@ export const content = {
   },
 
   // ┌──────────────────────────────────────────────────────
-  // │ ⑨ 底部 Footer(每个页面底部都会显示)
+  // │ ⑨ 兴趣爱好 / 其他页(Others 页)
+  // │
+  // │   pageHeading    页面大标题
+  // │   heading        兴趣爱好小标题
+  // │   body           兴趣爱好正文(一段话)
+  // │   liverpoolHeading  观赛照片小标题
+  // │   albumsHeading     专辑小标题
+  // │   albumsCaption     专辑说明(提示点击可播放)
+  // │   photoPlaceholder / albumPlaceholder  占位框里显示的文字
+  // │
+  // │   liverpoolPhotos  观赛照片数组(语言无关,放在 en/zh 之外)
+  // │     - 空字符串 ""        → 显示占位框
+  // │     - "/matchday1.jpg"   → 显示该图片(文件放 public/ 下)
+  // │
+  // │   albums  专辑数组(语言无关,放在 en/zh 之外),每项是一个对象:
+  // │     - cover     封面图路径,空字符串 "" → 显示占位框;"/covers/xxx.jpg" → 显示封面
+  // │     - audioSrc  音频路径,空字符串 "" → 不能播放;"/audio/xxx.mp3" → 点击播放(文件放 public/ 下)
+  // │     - title     歌曲名(显示在封面上)
+  // │     - artist    艺人名(显示在封面上)
+  // │   想加更多专辑?在数组里加一个 { cover, audioSrc, title, artist } 对象即可。
+  // └──────────────────────────────────────────────────────
+  hobbies: {
+    en: {
+      pageHeading: "Others",
+      heading: "Hobbies & Interests",
+      body: "Outside of work, I'm also passionate about football, basketball, and music. My favourite football club is Liverpool FC, and the genres I love most are R&B and Soul. Below are some of my matchday moments and the music I've been listening to lately. If you share any of these interests, feel free to reach out via the contact below!",
+      liverpoolHeading: "Matchday Moments",
+      albumsHeading: "Recently Listening",
+      albumsCaption: "Click an album cover to play a track from it.",
+      photoPlaceholder: "Matchday photo",
+      albumPlaceholder: "Album cover",
+    },
+    zh: {
+      pageHeading: "其他",
+      heading: "兴趣爱好",
+      body: "在工作之余，我对足球、篮球及音乐等事物也非常感兴趣。我最喜欢的足球俱乐部是利物浦，最喜欢的音乐类型是 R&B 和 Soul。下方展示了我的一些观赛瞬间以及最近在听的音乐，如果你和我有一样的兴趣爱好，也欢迎点击下方联系方式交流讨论！",
+      liverpoolHeading: "观赛瞬间",
+      albumsHeading: "最近在听的专辑",
+      albumsCaption: "点击专辑封面即可播放该专辑的一首歌。",
+      photoPlaceholder: "观赛照片",
+      albumPlaceholder: "专辑封面",
+    },
+    // 观赛照片:空字符串=占位框,填路径=显示图片
+    liverpoolPhotos: ["/matchday/matchday1.jpg", "/matchday/matchday2.jpg", "/matchday/matchday3.jpg", "/matchday/matchday4.jpg", "/matchday/matchday5.jpg", "/matchday/matchday6.jpg"],
+    // 专辑:cover / audioSrc 留空 = 占位框;填路径后点击封面即可播放对应歌曲
+    albums: [
+      { cover: "/covers/chromakopia.jpeg", audioSrc: "/audio/like-him.mp3", title: "CHROMAKOPIA", artist: "Tyler, the Creator" },
+      { cover: "/covers/channel_orange.jpeg", audioSrc: "/audio/thinkin-bout-you.mp3", title: "channel ORANGE", artist: "Frank Ocean" },
+      { cover: "/covers/imok.jpg", audioSrc: "/audio/putong-pengyou.mp3", title: "I'm OK", artist: "陶喆" },
+      { cover: "/covers/neverenough.jpeg", audioSrc: "/audio/toronto-2014.mp3", title: "Never Enough", artist: "Daniel Caesar" },
+    ],
+  },
+
+  // ┌──────────────────────────────────────────────────────
+  // │ ⑩ 底部 Footer(每个页面底部都会显示)
   // └──────────────────────────────────────────────────────
   footer: {
     en: { built: "Built with Astro & Tailwind", rights: "© 2026 Yifan Chen (Evan)" },
