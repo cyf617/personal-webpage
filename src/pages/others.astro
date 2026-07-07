@@ -27,21 +27,6 @@ const cvZH = `${BASE}/cv/Yifan_Chen_CV_ZH.pdf`.replace(/\/+/g, "/");
         <span class="lang-zh">{c.hobbies.zh.pageHeading}</span>
       </h1>
     </div>
-
-    <!-- Hobbies intro -->
-    <div class="reveal">
-      <h2 class="hobbies-heading">
-        <span class="lang-en">{c.hobbies.en.heading}</span>
-        <span class="lang-zh">{c.hobbies.zh.heading}</span>
-      </h2>
-      <p class="about-bio">
-        <span class="lang-en">{c.hobbies.en.body}</span>
-        <span class="lang-zh">{c.hobbies.zh.body}</span>
-      </p>
-    </div>
-
-    <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--color-rule);" />
-
     <!-- Matchday photos placeholders -->
     <div class="reveal">
       <h2 class="hobbies-heading" style="margin-bottom: 1.5rem;">
@@ -71,7 +56,7 @@ const cvZH = `${BASE}/cv/Yifan_Chen_CV_ZH.pdf`.replace(/\/+/g, "/");
 
     <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--color-rule);" />
 
-    <!-- Albums (click cover to play) -->
+    <!-- Albums (click record to play) -->
     <div class="reveal">
       <h2 class="hobbies-heading">
         <span class="lang-en">{c.hobbies.en.albumsHeading}</span>
@@ -81,47 +66,69 @@ const cvZH = `${BASE}/cv/Yifan_Chen_CV_ZH.pdf`.replace(/\/+/g, "/");
         <span class="lang-en">{c.hobbies.en.albumsCaption}</span>
         <span class="lang-zh">{c.hobbies.zh.albumsCaption}</span>
       </p>
-      <div class="gallery">
-        {c.hobbies.albums.map((a) => (
-          a.cover ? (
-            a.audioSrc ? (
-              <button
-                type="button"
-                class="album-card"
-                data-audio={`${BASE}${a.audioSrc}`.replace(/\/+/g, "/")}
-                aria-label={`Play ${a.title} — ${a.artist}`}
-              >
-                <img src={`${BASE}${a.cover}`.replace(/\/+/g, "/")} alt={`${a.title} — ${a.artist}`} />
-                <span class="album-play-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                </span>
-                <span class="album-pause-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
-                </span>
-                {(a.title || a.artist) && (
-                  <span class="album-meta">{a.title}{a.artist ? ` — ${a.artist}` : ""}</span>
-                )}
-              </button>
-            ) : (
-              <div class="album-card album-card--noaudio">
-                <img src={`${BASE}${a.cover}`.replace(/\/+/g, "/")} alt={`${a.title} — ${a.artist}`} />
-                {(a.title || a.artist) && (
-                  <span class="album-meta">{a.title}{a.artist ? ` — ${a.artist}` : ""}</span>
-                )}
+
+      <div class="music-player-wrapper">
+        <!-- Turntable Deck -->
+        <div class="record-player" id="record-player">
+          <div class="platter-area">
+            <!-- Clicking the vinyl record shuffles/changes track -->
+            <div class="vinyl-record" id="vinyl-record" aria-label="Shuffle / Next Track">
+              <div class="vinyl-label">
+                <img id="current-album-cover" src="" alt="Album cover" />
+                <div class="vinyl-center-dot"></div>
               </div>
-            )
-          ) : (
-            <div class="gallery-item gallery-item--album">
-              <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <circle cx="12" cy="12" r="10" />
-                <circle cx="12" cy="12" r="3" />
-              </svg>
-              <span class="lang-en">{c.hobbies.en.albumPlaceholder}</span>
-              <span class="lang-zh">{c.hobbies.zh.albumPlaceholder}</span>
             </div>
-          )
-        ))}
+          </div>
+          <!-- Tonearm Assembly -->
+          <div class="tonearm-assembly" id="tonearm">
+            <div class="tonearm-pivot"></div>
+            <div class="tonearm-arm"></div>
+            <div class="tonearm-headshell"></div>
+          </div>
+
+          <!-- Play / Pause Power Switch on the Deck -->
+          <button class="deck-power-btn" id="deck-power-btn" aria-label="Toggle Play/Pause">
+            <svg class="power-icon-play" id="power-icon-play" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            <svg class="power-icon-pause" id="power-icon-pause" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" style="display: none;"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+          </button>
+        </div>
+
+        <!-- Meta Section (Spacious layout for song details and subjective descriptions) -->
+        <div class="player-info">
+          <div class="player-info-header">
+            <div class="track-meta">
+              <h3 class="track-title" id="track-song">
+                <span class="lang-en font-normal">Click Record to Begin a Music Journey</span>
+                <span class="lang-zh font-normal">点击唱片进入一段音乐旅途</span>
+              </h3>
+              <p class="track-artist" id="track-artist"></p>
+            </div>
+            <!-- Audio playing equalizer bars -->
+            <div class="eq-bars" id="eq-bars" style="display: none; margin-top: 6px;">
+              <div class="eq-bar"></div>
+              <div class="eq-bar"></div>
+              <div class="eq-bar"></div>
+              <div class="eq-bar"></div>
+            </div>
+          </div>
+
+          <div class="track-meta-detail">
+            <span class="lang-en" id="track-meta-detail-en"></span>
+            <span class="lang-zh" id="track-meta-detail-zh"></span>
+          </div>
+
+          <!-- Subjective interpretation -->
+          <p class="track-desc lang-en" id="track-desc-en">
+            Discover Evan's favorite music. Click the vinyl record on the left to get a random music snippet.
+          </p>
+          <p class="track-desc lang-zh" id="track-desc-zh">
+            探索 Evan 喜欢的音乐。点击左侧的黑胶唱片，即可收获一段随机音乐片段。
+          </p>
+        </div>
       </div>
+
+      <!-- JSON data bridge for JavaScript -->
+      <div id="album-data" data-albums={JSON.stringify(c.hobbies.albums)} data-base={BASE} style="display: none;"></div>
       <audio id="album-audio" preload="none"></audio>
     </div>
 
@@ -154,27 +161,183 @@ const cvZH = `${BASE}/cv/Yifan_Chen_CV_ZH.pdf`.replace(/\/+/g, "/");
     (function () {
       const audio = document.getElementById('album-audio');
       if (!audio) return;
-      const cards = document.querySelectorAll('.album-card[data-audio]');
-      let current = null;
 
-      const setPlaying = (btn, on) => btn.classList.toggle('is-playing', on);
+      // DOM elements
+      const vinylRecord = document.getElementById('vinyl-record');
+      const vinylCover = document.getElementById('current-album-cover');
+      const tonearm = document.getElementById('tonearm');
+      const eqBars = document.getElementById('eq-bars');
+      
+      const deckPowerBtn = document.getElementById('deck-power-btn');
+      const powerIconPlay = document.getElementById('power-icon-play');
+      const powerIconPause = document.getElementById('power-icon-pause');
 
-      cards.forEach((btn) => {
-        btn.addEventListener('click', () => {
-          if (current === btn) {
-            if (audio.paused) { audio.play(); } else { audio.pause(); }
-          } else {
-            if (current) setPlaying(current, false);
-            audio.src = btn.dataset.audio;
-            current = btn;
-            audio.play().catch(() => setPlaying(current, false));
+      const dataBridge = document.getElementById('album-data');
+      if (!dataBridge) return;
+
+      const base = dataBridge.dataset.base || '';
+      const rawAlbums = JSON.parse(dataBridge.dataset.albums || '[]');
+      const albums = rawAlbums.map(a => ({
+        cover: a.cover ? `${base}${a.cover}`.replace(/\/+/g, "/") : "",
+        audioSrc: a.audioSrc ? `${base}${a.audioSrc}`.replace(/\/+/g, "/") : "",
+        title: a.title || "",
+        artist: a.artist || "",
+        song: a.song || "",
+        year: a.year || "",
+        genreEN: a.genreEN || "",
+        genreZH: a.genreZH || "",
+        descEN: a.descEN || "",
+        descZH: a.descZH || ""
+      }));
+
+      // State variables
+      let currentIndex = -1;
+      let isPlaying = false;
+
+      // Set playing UI state
+      function updatePlayerUI(playing) {
+        isPlaying = playing;
+        
+        if (playing) {
+          vinylRecord.classList.add('is-playing');
+          tonearm.classList.add('is-playing');
+          eqBars.style.display = 'flex';
+          // Add equalizer bar animations
+          const bars = eqBars.querySelectorAll('.eq-bar');
+          bars.forEach(bar => bar.classList.add('eq-bar-playing'));
+
+          // Toggle deck power button icons
+          powerIconPlay.style.display = 'none';
+          powerIconPause.style.display = 'block';
+        } else {
+          vinylRecord.classList.remove('is-playing');
+          tonearm.classList.remove('is-playing');
+          const bars = eqBars.querySelectorAll('.eq-bar');
+          bars.forEach(bar => bar.classList.remove('eq-bar-playing'));
+
+          // Toggle deck power button icons
+          powerIconPlay.style.display = 'block';
+          powerIconPause.style.display = 'none';
+
+          // Wait briefly for tonearm to lift before hiding equalizer
+          setTimeout(() => {
+            if (!isPlaying) eqBars.style.display = 'none';
+          }, 800);
+        }
+      }
+
+      // Load and play a track
+      function loadTrack(index, forcePlay = true) {
+        if (index < 0 || index >= albums.length) return;
+        
+        const track = albums[index];
+        currentIndex = index;
+
+        const trackSong = document.getElementById('track-song');
+        const trackArtist = document.getElementById('track-artist');
+        const trackMetaDetailEN = document.getElementById('track-meta-detail-en');
+        const trackMetaDetailZH = document.getElementById('track-meta-detail-zh');
+        const trackDescEN = document.getElementById('track-desc-en');
+        const trackDescZH = document.getElementById('track-desc-zh');
+
+        if (trackSong) {
+          trackSong.textContent = track.song;
+        }
+        if (trackArtist) {
+          trackArtist.textContent = track.artist;
+        }
+        if (trackMetaDetailEN) {
+          trackMetaDetailEN.textContent = `${track.title} • ${track.year} • ${track.genreEN}`;
+        }
+        if (trackMetaDetailZH) {
+          trackMetaDetailZH.textContent = `${track.title} • ${track.year} • ${track.genreZH}`;
+        }
+        if (trackDescEN) {
+          trackDescEN.textContent = track.descEN;
+        }
+        if (trackDescZH) {
+          trackDescZH.textContent = track.descZH;
+        }
+
+        // Update cover image on vinyl label
+        if (track.cover) {
+          vinylCover.src = track.cover;
+          vinylCover.classList.add('is-loaded');
+        } else {
+          vinylCover.classList.remove('is-loaded');
+          vinylCover.src = "";
+        }
+
+        // Set audio source
+        audio.src = track.audioSrc;
+        
+        if (forcePlay && track.audioSrc) {
+          // Swing tonearm first, then delay play slightly for realistic feel
+          updatePlayerUI(true);
+          setTimeout(() => {
+            audio.play().catch((err) => {
+              console.log("Audio play failed:", err);
+              updatePlayerUI(false);
+            });
+          }, 600);
+        } else {
+          updatePlayerUI(false);
+        }
+      }
+
+      // Play random track
+      function playRandom() {
+        if (albums.length === 0) return;
+        
+        let newIndex = currentIndex;
+        // Avoid playing the same song twice if possible
+        if (albums.length > 1) {
+          while (newIndex === currentIndex) {
+            newIndex = Math.floor(Math.random() * albums.length);
           }
-        });
+        } else {
+          newIndex = 0;
+        }
+
+        loadTrack(newIndex, true);
+      }
+
+      // Click vinyl record to shuffle/play next random song
+      vinylRecord.addEventListener('click', (e) => {
+        e.stopPropagation();
+        playRandom();
       });
 
-      audio.addEventListener('play', () => { if (current) setPlaying(current, true); });
-      audio.addEventListener('pause', () => { if (current) setPlaying(current, false); });
-      audio.addEventListener('ended', () => { if (current) setPlaying(current, false); });
+      // Click deck power button to toggle play/pause
+      deckPowerBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (currentIndex === -1) {
+          // First play, pick random
+          playRandom();
+        } else {
+          if (audio.paused) {
+            updatePlayerUI(true);
+            setTimeout(() => {
+              audio.play().catch(() => updatePlayerUI(false));
+            }, 600);
+          } else {
+            audio.pause();
+            updatePlayerUI(false);
+          }
+        }
+      });
+
+      // Audio event listeners
+      audio.addEventListener('play', () => {
+        updatePlayerUI(true);
+      });
+      audio.addEventListener('pause', () => {
+        updatePlayerUI(false);
+      });
+      audio.addEventListener('ended', () => {
+        // Auto play next random song on end
+        playRandom();
+      });
     })();
   </script>
 </Layout>

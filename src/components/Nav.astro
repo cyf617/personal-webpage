@@ -53,6 +53,18 @@ const href = (path) => path === "/" ? (base || "/") : `${base}${path}`;
 <div id="nav-mobile-overlay" class="nav-mobile-overlay"></div>
 <div id="nav-mobile-panel" class="nav-mobile-panel">
   <ul class="nav-mobile-links">
+    <li>
+      <a
+        href={href("/")}
+        class:list={{
+          "nav-mobile-link": true,
+          "nav-mobile-link--active": current === "/",
+        }}
+      >
+        <span class="lang-en">Home</span>
+        <span class="lang-zh">主页</span>
+      </a>
+    </li>
     {pages.map((p) => (
       <li>
         <a

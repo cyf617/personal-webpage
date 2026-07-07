@@ -56,7 +56,7 @@ export const content = {
     en: {
       heading: "About",
       body: [
-        "I am currently working as an AI Data Engineering Intern at KNQ, exploring how to build AI solutions for the sports domain. At the same time, I will soon be starting my PhD, where I will delve into the application of Large Language Models (LLMs) and Agentic AI in complex transportation systems. Previously, I earned my MSc in Transport and Data Science from Imperial College London, and a BSc in Applied Mathematics from Xi'an Jiaotong-Liverpool University.",
+        "I am currently working as an AI Data Engineering Intern at KNQ, exploring how to build AI solutions for the sports domain. At the same time, I will soon be starting my PhD, where I will delve into the application of Large Language Models (LLMs) and Agentic AI in complex transportation systems. Previously, I earned my MSc in Transport with Data Science from Imperial College London, and a BSc in Applied Mathematics from Xi'an Jiaotong-Liverpool University.",
         "My core research interests include Trustworthy AI, GenAI for Transport, Intelligent Transport Systems (ITS), and AI for Sports. I have extensive experience transforming complex, real-world data—ranging from spatio-temporal trajectories to multimodal sports audio-visual and commentary data—into high-quality, evaluable data assets that power intelligent models.",
         "Recently, my work has spanned several diverse applications. I have developed data pipelines for AI-driven sports clipping and automated commentary, engineered diffusion-based models for car-following trajectory prediction, and conducted large-scale GPS analytics for a World Bank logistics project. Across these domains, my goal is to bridge the gap between advanced machine learning and real-world decision-making.",
       ],
@@ -104,10 +104,11 @@ export const content = {
             "Ablations showed map-context features reduced validation displacement-error loss by over 20%.",
           ],
           tags: ["PyTorch", "Diffusion", "Transformer", "nuPlan"],
+          images: ["/projects/Disser1.png", "/projects/Disser2.png", "/projects/Disser3.png"],
         },
         {
           title: "Big Data & AI Logistics Model for First-Last Mile — India",
-          role: "Project Leader · In collaboration with World Bank Group",
+          role: "Core Contributor · In collaboration with World Bank Group",
           date: "May 2025 — Jul 2025",
           summary:
             "Led a team converting more than 40 million truck GPS records into interpretable event-state representations for logistics analysis.",
@@ -117,10 +118,11 @@ export const content = {
             "Built GIS visualisations for trajectory monitoring, stop hotspots and abnormal-operation analysis.",
           ],
           tags: ["GIS", "Classification", "World Bank", "Python"],
+          images: ["/projects/GPS1.png", "/projects/GPS4.png", "/projects/GPS5.png", "/projects/GPS2.png"],
         },
         {
           title: "ML for Policy: Reducing CO₂ Emissions in the Canadian Auto Sector",
-          role: "Project Leader · Imperial College London",
+          role: "Core Contributor · Imperial College London",
           date: "Jan 2025 — Mar 2025",
           summary:
             "Built interpretable predictive models for vehicle CO2 emissions and translated model evidence into policy recommendations.",
@@ -129,6 +131,7 @@ export const content = {
             "Connected explainability results to emission taxation, EV subsidy and high-emission-vehicle regulation strategies.",
           ],
           tags: ["SHAP", "Trustworthy AI", "Policy", "Regression"],
+          images: ["/projects/Shap1.png", "/projects/Shap2.png"],
         },
         {
           title: "A Topological Method in Music Recognition Algorithms",
@@ -142,6 +145,7 @@ export const content = {
             "Connected abstract mathematical structure with practical media-recognition algorithms.",
           ],
           tags: ["Persistent Homology", "TDA", "Audio", "Mathematics"],
+          hidden: true,
         },
       ],
     },
@@ -161,10 +165,11 @@ export const content = {
             "引入车道线、道路边界、交通规则等地图上下文后，验证集位移误差损失降低 20% 以上。",
           ],
           tags: ["PyTorch", "Diffusion", "Transformer", "nuPlan"],
+          images: ["/projects/Disser1.png", "/projects/Disser2.png", "/projects/Disser3.png"],
         },
         {
           title: "印度首末公里物流大数据与 AI 模型",
-          role: "项目组长 · 与世界银行 (World Bank Group) 合作",
+          role: "核心贡献者 · 与世界银行 (World Bank Group) 合作",
           date: "2025 年 5 月 — 7 月",
           summary:
             "带队处理 4000 万条以上印度卡车 GPS 轨迹，将原始记录转化为可解释的事件-状态数据，用于物流效率分析。",
@@ -174,10 +179,11 @@ export const content = {
             "搭建 GIS 可视化工具，展示车辆轨迹、状态分布、停留热点和异常运行情况，支持监控与调度分析。",
           ],
           tags: ["GIS", "分类", "世界银行", "Python"],
+          images: ["/projects/GPS1.png", "/projects/GPS4.png", "/projects/GPS5.png", "/projects/GPS2.png"],
         },
         {
           title: "可解释机器学习驱动的加拿大汽车行业 CO₂ 减排政策",
-          role: "项目组长 · 帝国理工学院",
+          role: "核心贡献者 · 帝国理工学院",
           date: "2025 年 1 月 — 3 月",
           summary:
             "建立可解释的 CO2 排放预测模型，并基于 SHAP 分析把模型证据转化为可执行的政策建议。",
@@ -186,6 +192,7 @@ export const content = {
             "为碳税、电车补贴和高排放车辆监管提供循证参考，体现可信 AI 在政策分析中的作用。",
           ],
           tags: ["SHAP", "可信 AI", "政策", "回归"],
+          images: ["/projects/Shap1.png", "/projects/Shap2.png"],
         },
         {
           title: "拓扑方法在音乐识别算法中的应用",
@@ -199,6 +206,7 @@ export const content = {
             "把抽象数学理论转化为实际媒体识别算法组件。",
           ],
           tags: ["持续同调", "TDA", "音频", "数学"],
+          hidden: true,
         },
       ],
     },
@@ -351,7 +359,7 @@ export const content = {
   contact: {
     en: {
       heading: "Get in touch",
-      subheading: "I am always open to discussing new opportunities, collaborations, or research ideas related to Trustworthy AI, Intelligent Transport Systems, and Sports AI. Feel free to reach out!",
+      subheading: "I am highly passionate about research, product development, and collaboration opportunities in Trustworthy AI, Intelligent Transportation Systems, and Sports AI. Meanwhile, I also share a great interest in sports, music, movies, and other exciting experiences. I warmly welcome collaborations or discussions of new ideas, whether for professional topics or casual chat, please feel free to reach out!",
       email: "yifanchen0726@gmail.com",
       phone: "+86 186 3816 8007",
       github: "https://github.com/cyf617",
@@ -360,7 +368,7 @@ export const content = {
     },
     zh: {
       heading: "联系我",
-      subheading: "我对可信 AI、智能交通以及体育 AI 领域的研究、产品与岗位机会充满热情。非常欢迎交流合作或探讨新的想法，随时联系我！",
+      subheading: "我对可信 AI、智能交通以及体育 AI 等领域的研究、产品与合作机会充满热情。同时，也对体育、音乐、电影等新鲜事物有着极大的兴趣。非常欢迎交流合作或探讨新的想法，无论是专业探讨还是日常交流，请随时联系我！",
       email: "yifanchen0726@gmail.com",
       phone: "+86 186 3816 8007",
       github: "https://github.com/cyf617",
@@ -398,7 +406,7 @@ export const content = {
       body: "Outside of work, I'm also passionate about football, basketball, and music. My favourite football club is Liverpool FC, and the genres I love most are R&B and Soul. Below are some of my matchday moments and the music I've been listening to lately. If you share any of these interests, feel free to reach out via the contact below!",
       liverpoolHeading: "Matchday Moments",
       albumsHeading: "Recently Listening",
-      albumsCaption: "Click an album cover to play a track from it.",
+      albumsCaption: "Click the vinyl record to randomly explore a music snippet.",
       photoPlaceholder: "Matchday photo",
       albumPlaceholder: "Album cover",
     },
@@ -408,7 +416,7 @@ export const content = {
       body: "在工作之余，我对足球、篮球及音乐等事物也非常感兴趣。我最喜欢的足球俱乐部是利物浦，最喜欢的音乐类型是 R&B 和 Soul。下方展示了我的一些观赛瞬间以及最近在听的音乐，如果你和我有一样的兴趣爱好，也欢迎点击下方联系方式交流讨论！",
       liverpoolHeading: "观赛瞬间",
       albumsHeading: "最近在听的专辑",
-      albumsCaption: "点击专辑封面即可播放该专辑的一首歌。",
+      albumsCaption: "点击黑胶唱片随机探索一段音乐片段。",
       photoPlaceholder: "观赛照片",
       albumPlaceholder: "专辑封面",
     },
@@ -416,10 +424,54 @@ export const content = {
     liverpoolPhotos: ["/matchday/matchday1.jpg", "/matchday/matchday2.jpg", "/matchday/matchday3.jpg", "/matchday/matchday4.jpg", "/matchday/matchday5.jpg", "/matchday/matchday6.jpg"],
     // 专辑:cover / audioSrc 留空 = 占位框;填路径后点击封面即可播放对应歌曲
     albums: [
-      { cover: "/covers/chromakopia.jpeg", audioSrc: "/audio/like-him.mp3", title: "CHROMAKOPIA", artist: "Tyler, the Creator" },
-      { cover: "/covers/channel_orange.jpeg", audioSrc: "/audio/thinkin-bout-you.mp3", title: "channel ORANGE", artist: "Frank Ocean" },
-      { cover: "/covers/imok.jpg", audioSrc: "/audio/putong-pengyou.mp3", title: "I'm OK", artist: "陶喆" },
-      { cover: "/covers/neverenough.jpeg", audioSrc: "/audio/toronto-2014.mp3", title: "Never Enough", artist: "Daniel Caesar" },
+      {
+        cover: "/covers/chromakopia.jpeg",
+        audioSrc: "/audio/like-him.mp3",
+        title: "CHROMAKOPIA",
+        artist: "Tyler, the Creator",
+        song: "Like Him",
+        year: "2024",
+        genreEN: "Alternative R&B / Soul",
+        genreZH: "另类 R&B / 灵魂乐",
+        descEN: "A deeply emotional track exploring Tyler's complex feelings about his absent father and his mother's reflections. It blends lush synths, piano chords, and haunting vocals to capture vulnerability and identity.",
+        descZH: "一首探讨 Tyler 对缺位父亲的复杂情感及母亲反思的深情之作。歌曲将丰富的合成器、钢琴和声与令人动容的人声交织，展现了关于自我身份认同的脆弱一面。"
+      },
+      {
+        cover: "/covers/channel_orange.jpeg",
+        audioSrc: "/audio/thinkin-bout-you.mp3",
+        title: "channel ORANGE",
+        artist: "Frank Ocean",
+        song: "Thinkin Bout You",
+        year: "2012",
+        genreEN: "Neo-Soul / Contemporary R&B",
+        genreZH: "新灵魂乐 / 现代 R&B",
+        descEN: "Frank Ocean's iconic R&B masterpiece, famed for its stunning falsetto hook. It's a melancholic, atmospheric reflection on unrequited love and longing, blending raw vulnerability with smooth neo-soul vibes.",
+        descZH: "Frank Ocean 标志性的 R&B 杰作，以惊艳的假音副歌闻名。歌曲通过迷幻的编曲深情诉说着对单恋和思念的忧郁反思，将真实的脆弱感融入丝滑的新灵魂乐中。"
+      },
+      {
+        cover: "/covers/imok.jpg",
+        audioSrc: "/audio/putong-pengyou.mp3",
+        title: "I'm OK",
+        artist: "陶喆",
+        song: "普通朋友",
+        year: "1999",
+        genreEN: "Mandarin R&B / Soul",
+        genreZH: "华语 R&B / 灵魂乐",
+        descEN: "A timeless R&B classic. Starting with the legendary acoustic guitar intro, David Tao delivers a soulful narration of the painful 'friend zone' with smooth vocals and expressive ad-libs.",
+        descZH: "华语流行乐坛不可磨灭的 R&B 经典之作。从经典的木吉他前奏拉开序幕，陶喆用丝滑的唱腔与真挚的即兴转音，细腻诠释了身处“友情以上，恋人未满”的无奈与心酸。"
+      },
+      {
+        cover: "/covers/neverenough.jpeg",
+        audioSrc: "/audio/toronto-2014.mp3",
+        title: "Never Enough",
+        artist: "Daniel Caesar",
+        song: "Toronto 2014",
+        year: "2023",
+        genreEN: "Contemporary R&B / Neo-Soul",
+        genreZH: "现代 R&B / 灵魂乐",
+        descEN: "A nostalgic and warm track looking back at Daniel Caesar's pre-fame days in Toronto. It features Mustafa, blending warm harmonies, minimalist guitar, and a bittersweet sense of homecoming.",
+        descZH: "一首充满怀旧温情之作，回望了 Daniel Caesar 成名前在多伦多的青葱岁月。歌曲携手 Mustafa，融入温暖的和声与极简的吉他伴奏，透露出苦甜参半的乡愁与归属感。"
+      },
     ],
   },
 

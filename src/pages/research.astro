@@ -23,44 +23,105 @@ import { content as c } from "../data/content";
     {c.research.en.items.map((_, i) => {
       const en = c.research.en.items[i];
       const zh = c.research.zh.items[i];
+      if (en.hidden) return null;
       return (
         <article class="project-card reveal">
-          <div class="project-header">
-            <h2 class="project-title">
-              <span class="lang-en">{en.title}</span>
-              <span class="lang-zh">{zh.title}</span>
-            </h2>
-            <span class="project-date">
-              <span class="lang-en">{en.date}</span>
-              <span class="lang-zh">{zh.date}</span>
-            </span>
-          </div>
-          <p class="project-role">
-            <span class="lang-en">{en.role}</span>
-            <span class="lang-zh">{zh.role}</span>
-          </p>
-          <p class="project-summary">
-            <span class="lang-en">{en.summary}</span>
-            <span class="lang-zh">{zh.summary}</span>
-          </p>
-          <ul class="project-bullets">
-            {en.bullets.map((_, j) => (
-              <li class="project-bullet">
-                <span class="lang-en">{en.bullets[j]}</span>
-                <span class="lang-zh">{zh.bullets[j]}</span>
-              </li>
-            ))}
-          </ul>
-          <div class="project-tags">
-            {en.tags.map((_, j) => (
-              <span class="project-tag">
-                <span class="lang-en">{en.tags[j]}</span>
-                <span class="lang-zh">{zh.tags[j]}</span>
-              </span>
-            ))}
+          <div class="project-card-grid">
+            <div class="project-details">
+              <div class="project-header">
+                <h2 class="project-title"><span class="lang-en">{en.title}</span><span class="lang-zh">{zh.title}</span></h2>
+                <span class="project-date"><span class="lang-en">{en.date}</span><span class="lang-zh">{zh.date}</span></span>
+              </div>
+              <p class="project-role"><span class="lang-en">{en.role}</span><span class="lang-zh">{zh.role}</span></p>
+              <ul class="project-bullets">
+                {en.summary && (
+                  <li class="project-bullet"><span><span class="lang-en">{en.summary}</span><span class="lang-zh">{zh.summary}</span></span></li>
+                )}
+                {en.bullets.map((_, j) => (
+                  <li class="project-bullet"><span><span class="lang-en">{en.bullets[j]}</span><span class="lang-zh">{zh.bullets[j]}</span></span></li>
+                ))}
+              </ul>
+              <div class="project-tags">
+                {en.tags.map((_, j) => (
+                  <span class="project-tag"><span class="lang-en">{en.tags[j]}</span><span class="lang-zh">{zh.tags[j]}</span></span>
+                ))}
+              </div>
+            </div>
+
+            {en.images && en.images.length > 0 && (
+              <div class="project-gallery">
+                {en.images.map((img) => {
+                  const isWide = img && img.includes('Disser3.png');
+                  return (
+                    <div
+                      class:list={[
+                        "project-gallery-image",
+                        { "project-gallery-image--wide": isWide }
+                      ]}
+                    >
+                      <img src={img} alt={en.title} loading="lazy" />
+                    </div>
+                  );
+                })}
+              </div>
+            )}
           </div>
         </article>
       );
     })}
   </section>
+
+  <!-- Lightbox Modal -->
+  <div id="lightbox" class="lightbox-modal">
+    <button id="lightbox-close" class="lightbox-close" aria-label="Close lightbox">&times;</button>
+    <div class="lightbox-content">
+      <img id="lightbox-img" src="" alt="Enlarged project screenshot" />
+    </div>
+  </div>
+
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      const closeBtn = document.getElementById('lightbox-close');
+      const triggers = document.querySelectorAll('[data-lightbox-trigger]');
+
+      if (!lightbox || !lightboxImg || !closeBtn) return;
+
+      const openLightbox = (src) => {
+        lightboxImg.src = src;
+        lightbox.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+      };
+
+      const closeLightbox = () => {
+        lightbox.classList.remove('is-open');
+        document.body.style.overflow = '';
+        setTimeout(() => {
+          lightboxImg.src = '';
+        }, 300);
+      };
+
+      triggers.forEach(trigger => {
+        trigger.addEventListener('click', () => {
+          const src = trigger.getAttribute('data-lightbox-trigger');
+          if (src) openLightbox(src);
+        });
+      });
+
+      closeBtn.addEventListener('click', closeLightbox);
+      
+      lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) {
+          closeLightbox();
+        }
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && lightbox.classList.contains('is-open')) {
+          closeLightbox();
+        }
+      });
+    });
+  </script>
 </Layout>

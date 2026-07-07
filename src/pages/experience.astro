@@ -40,10 +40,7 @@ import { content as c } from "../data/content";
             </p>
             <ul class="timeline-details">
               {en.detail.map((_, j) => (
-                <li class="timeline-detail-item">
-                  <span class="lang-en">{en.detail[j]}</span>
-                  <span class="lang-zh">{zh.detail[j]}</span>
-                </li>
+                <li class="timeline-detail-item"><span><span class="lang-en">{en.detail[j]}</span><span class="lang-zh">{zh.detail[j]}</span></span></li>
               ))}
             </ul>
           </div>
