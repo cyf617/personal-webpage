@@ -66,7 +66,7 @@ export const content = {
       heading: "关于我",
       body: [
         "我目前在麒纪科技（KNQ）担任 AI 数据工程实习生，探索如何搭建体育方向的 AI 解决方案。同时即将成为一名博士生，在博士阶段我将深入研究大语言模型（LLMs）与智能体（Agentic AI）在复杂交通系统中的应用。此前，我分别在帝国理工学院（Imperial College London）和西交利物浦大学获得了交通与数据科学硕士学位及数学与应用数学学士学位。",
-        "我的核心研究兴趣包括可信 AI (Trustworthy AI)、生成式 AI 与交通 (GenAI for Transport)、智能交通系统 (Intelligent Transport Systems) 以及体育 AI (AI for Sports)。我擅长处理复杂多源的现实数据——从时空轨迹到多模态体育音视频及解说语料数据，并拥有丰富的经验将它们转化为可训练、可评估的高质量数据资产。",
+        "我的核心研究兴趣包括可信 AI (Trustworthy AI)、生成式 AI 与交通 (GenAI for Transport)、智能交通系统 (Intelligent Transport Systems) 以及体育 AI (AI for Sports)。我擅长处理复杂多源的现实数据，从时空轨迹到多模态体育音视频及解说语料，并拥有丰富的经验将它们转化为可训练、可评估的高质量数据资产。",
         "在近期的项目中，我参与了多个富有挑战性的落地工作，包括：搭建多体育场景下的 AI 剪辑与自动解说数据管线，设计基于扩散模型的车辆轨迹预测架构，以及为世界银行项目处理和分析千万级的大规模卡车 GPS 轨迹。在这些实践中，我始终致力于在先进的机器学习算法与现实业务决策之间搭建桥梁。",
       ],
       interests: ["可信 AI", "生成式 AI 与交通", "智能交通系统", "体育 AI"],
@@ -298,8 +298,7 @@ export const content = {
             "Maintained PostgreSQL schemas mapping sports events, video clips, generated commentary text, and model outputs to facilitate fast retrieval and evaluation.",
             "Constructed sports jargon dictionaries and automatic spelling-to-pronunciation error correction models, significantly boosting TTS pronunciation accuracy for player names and horse racing terms.",
             "Developed evaluation frameworks scoring generated commentary quality across fluency, emotive expressiveness, and style consistency, supplying algorithm teams with critical defect logs.",
-            "Designed prompt templates, golden evaluation sets, and error logs for automated highlight clipping, commentary generation, and audio synthesis pipelines.",
-            "Wrote Python and SQL automation scripts for raw log preprocessing and database ingestion, greatly simplifying workflow complexity and enhancing daily iteration efficiency."
+            "Designed prompt templates, golden evaluation sets, and error logs for automated highlight clipping, commentary generation, and audio synthesis pipelines."
           ],
         },
       ],
@@ -319,8 +318,7 @@ export const content = {
             "设计并维护 PostgreSQL 数据库，建立赛事、音视频片段、多语言解说词与模型预测结果之间的字段映射，确保高效数据检索与快速模型回溯。",
             "构建体育垂直领域专用词典（覆盖球员姓名、赛马行话等专业术语），并参与设计自动纠错规则模型，使 TTS 模型朗读的专有名词准确率得到显著提升。",
             "建立多维度解说音频质量评估指标（如流畅度、情绪拟真度及风格符合度），对大模型生成内容进行质检打分，为 ASR/TTS 模型的迭代反馈关键缺陷数据。",
-            "针对 AI 视频智能剪辑、赛事自动解说与配音生成，构建并迭代 Prompt 模版库、精选评估数据集以及典型错误案例集。",
-            "编写基于 Python 和 SQL 的自动化数据清洗、特征提取及入库管道，极大简化了多源异构赛事数据的处理流程，提升日常模型评估效率。"
+            "针对 AI 视频智能剪辑、赛事自动解说与配音生成，构建并迭代 Prompt 模版库、精选评估数据集以及典型错误案例集。"
           ],
         },
       ],
