@@ -105,31 +105,84 @@ const cvZH = `${BASE}/cv/Yifan_Chen_CV_ZH.pdf`.replace(/\/+/g, "/");
 
     <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--color-rule);" />
 
-    <!-- Matchday photos placeholders -->
+    <!-- Matchday photos carousel -->
     <div class="reveal">
       <h2 class="hobbies-heading" style="margin-bottom: 1.5rem;">
         <span class="lang-en">{c.hobbies.en.liverpoolHeading}</span>
         <span class="lang-zh">{c.hobbies.zh.liverpoolHeading}</span>
       </h2>
-      <div class="gallery gallery--photos">
-        {c.hobbies.liverpoolPhotos.map((photo) => (
-          photo ? (
-            <div class="gallery-item gallery-item--photo">
-              <img src={`${BASE}${photo}`.replace(/\/+/g, "/")} alt="Matchday" />
+      {
+        (() => {
+          const photos = c.hobbies.liverpoolPhotos.filter(Boolean);
+          if (photos.length === 0) {
+            return (
+              <div class="gallery gallery--photos">
+                <div class="gallery-item gallery-item--photo">
+                  <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                    <circle cx="9" cy="9" r="2" />
+                    <path d="M21 15l-5-5L5 21" />
+                  </svg>
+                  <span class="lang-en">{c.hobbies.en.photoPlaceholder}</span>
+                  <span class="lang-zh">{c.hobbies.zh.photoPlaceholder}</span>
+                </div>
+              </div>
+            );
+          }
+          return (
+            <div class="matchday-carousel" id="matchday-carousel" data-count={photos.length}>
+              <div class="matchday-frame">
+                <div class="matchday-stage">
+                  <div class="matchday-track" id="matchday-track">
+                    {photos.length > 1 && (
+                      <div class="matchday-slide matchday-slide--clone" aria-hidden="true">
+                        <img
+                          src={`${BASE}${photos[photos.length - 1]}`.replace(/\/+/g, "/")}
+                          alt=""
+                          loading="eager"
+                          decoding="async"
+                          draggable="false"
+                        />
+                      </div>
+                    )}
+                    {photos.map((photo, i) => (
+                      <div class="matchday-slide">
+                        <img
+                          src={`${BASE}${photo}`.replace(/\/+/g, "/")}
+                          alt={`Matchday ${i + 1}`}
+                          loading={i === 0 ? "eager" : "lazy"}
+                          decoding="async"
+                          draggable="false"
+                        />
+                      </div>
+                    ))}
+                    {photos.length > 1 && (
+                      <div class="matchday-slide matchday-slide--clone" aria-hidden="true">
+                        <img
+                          src={`${BASE}${photos[0]}`.replace(/\/+/g, "/")}
+                          alt=""
+                          loading="lazy"
+                          decoding="async"
+                          draggable="false"
+                        />
+                      </div>
+                    )}
+                  </div>
+                </div>
+                <button class="matchday-nav matchday-nav--prev" type="button" aria-label="Previous photo" data-dir="-1">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><polyline points="15 18 9 12 15 6"/></svg>
+                </button>
+                <button class="matchday-nav matchday-nav--next" type="button" aria-label="Next photo" data-dir="1">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><polyline points="9 18 15 12 9 6"/></svg>
+                </button>
+              </div>
+              <div class="matchday-counter">
+                <span id="matchday-current">1</span><span class="matchday-counter-sep"> / </span><span id="matchday-total">{photos.length}</span>
+              </div>
             </div>
-          ) : (
-            <div class="gallery-item gallery-item--photo">
-              <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <rect x="3" y="3" width="18" height="18" rx="2" />
-                <circle cx="9" cy="9" r="2" />
-                <path d="M21 15l-5-5L5 21" />
-              </svg>
-              <span class="lang-en">{c.hobbies.en.photoPlaceholder}</span>
-              <span class="lang-zh">{c.hobbies.zh.photoPlaceholder}</span>
-            </div>
-          )
-        ))}
-      </div>
+          );
+        })()
+      }
     </div>
 
     <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--color-rule);" />
@@ -156,6 +209,73 @@ const cvZH = `${BASE}/cv/Yifan_Chen_CV_ZH.pdf`.replace(/\/+/g, "/");
     <!-- Liverpool FC anthem -->
     <p class="anthem">You'll Never Walk Alone!</p>
   </section>
+
+  <script is:inline>
+    (function () {
+      const carousel = document.getElementById('matchday-carousel');
+      if (!carousel) return;
+      const track = document.getElementById('matchday-track');
+      const currentEl = document.getElementById('matchday-current');
+      const total = parseInt(carousel.dataset.count || '0', 10);
+      if (!track || total <= 0) return;
+
+      // Infinite-carousel layout: the track wraps a clone of the last slide
+      // before slide 0 and a clone of slide 0 after the last slide. Logical
+      // index i (0..total-1) maps to DOM child i+1. Wrapping animates into the
+      // clone, then snaps back to the real slide with no transition.
+      let index = total > 1 ? 0 : -1;   // -1 = single-photo sentinel (no clones)
+      let pos = total > 1 ? 1 : 0;      // DOM child index currently centered
+      let busy = false;
+
+      function applyTransform(animate) {
+        track.style.transition = animate ? '' : 'none';
+        track.style.transform =
+          `translateX(calc((100% - var(--slide-w)) / 2 - ${pos} * (var(--slide-w) + var(--slide-gap))))`;
+        if (currentEl && index >= 0) currentEl.textContent = String(index + 1);
+      }
+
+      function resetIfClone() {
+        if (pos === 0) { pos = total; applyTransform(false); }
+        else if (pos === total + 1) { pos = 1; applyTransform(false); }
+        busy = false;
+      }
+
+      function go(dir) {
+        if (total <= 1 || busy) return;
+        busy = true;
+        pos += dir;
+        // Derive the logical index for the counter from the new DOM position.
+        if (pos === 0) index = total - 1;
+        else if (pos === total + 1) index = 0;
+        else index = pos - 1;
+        applyTransform(true);
+
+        // After the transition ends (or a fallback timer for reduced-motion),
+        // snap from the clone back to the corresponding real slide.
+        let done = false;
+        const finish = () => {
+          if (done) return;
+          done = true;
+          clearTimeout(timer);
+          track.removeEventListener('transitionend', onEnd);
+          resetIfClone();
+        };
+        const onEnd = (e) => { if (e.propertyName === 'transform') finish(); };
+        track.addEventListener('transitionend', onEnd);
+        const dur = parseFloat(getComputedStyle(track).transitionDuration) || 0;
+        const timer = setTimeout(finish, dur * 1000 + 60);
+      }
+
+      carousel.querySelectorAll('.matchday-nav').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const dir = parseInt(btn.dataset.dir || '1', 10);
+          go(dir);
+        });
+      });
+
+      applyTransform(false);
+    })();
+  </script>
 
   <script is:inline>
     (function () {

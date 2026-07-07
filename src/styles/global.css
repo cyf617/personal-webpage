@@ -466,6 +466,149 @@ h1, h2, h3, h4, h5 {
   background: transparent;
 }
 
+/* ── Matchday Photo Carousel ── */
+/* Layout: a relative frame holds the stage + absolutely-positioned nav buttons,
+   so the buttons overlay the image and their backdrop-filter blurs the photo. */
+.matchday-carousel {
+  position: relative;
+  max-width: 600px;
+  margin: 0 auto;
+  --slide-w: 66%;
+  --slide-gap: 2%;
+}
+/* Single photo: no peek, no mask — just one centered full-width image. */
+.matchday-carousel[data-count="1"] {
+  --slide-w: 100%;
+  --slide-gap: 0%;
+}
+.matchday-carousel[data-count="1"] .matchday-stage {
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+.matchday-frame {
+  position: relative;
+}
+.matchday-stage {
+  position: relative;
+  overflow: hidden;
+  border-radius: 14px;
+  border: 1px solid var(--color-rule);
+  background: var(--color-surface);
+  aspect-ratio: 2 / 1;
+  /* Fade the left/right peek areas so adjacent slides read as "隐隐约约".
+     Keep the opaque region in sync with (100% - --slide-w) / 2. */
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 17%, #000 83%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0, #000 17%, #000 83%, transparent 100%);
+}
+.matchday-track {
+  display: flex;
+  height: 100%;
+  gap: var(--slide-gap);
+  transition: transform .45s cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: transform;
+}
+.matchday-slide {
+  flex: 0 0 var(--slide-w);
+  height: 100%;
+  min-width: 0;
+}
+.matchday-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+.matchday-nav {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  width: 2.75rem;
+  height: 2.75rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(8px) saturate(1.1);
+  -webkit-backdrop-filter: blur(8px) saturate(1.1);
+  color: #fff;
+  cursor: pointer;
+  padding: 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+  transition: background .2s ease, border-color .2s ease, box-shadow .2s ease, transform .15s ease;
+}
+.matchday-nav:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.55);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
+}
+.matchday-nav:active {
+  transform: scale(0.94);
+}
+.matchday-nav--prev {
+  left: 0.75rem;
+  transform: translateY(-50%);
+}
+.matchday-nav--next {
+  right: 0.75rem;
+  transform: translateY(-50%);
+}
+.matchday-nav--prev:hover,
+.matchday-nav--next:hover {
+  transform: translateY(-50%);
+}
+.matchday-nav--prev:active,
+.matchday-nav--next:active {
+  transform: translateY(-50%) scale(0.94);
+}
+.dark .matchday-nav {
+  background: rgba(20, 20, 20, 0.4);
+  border-color: rgba(255, 255, 255, 0.18);
+  color: #f0f0f0;
+}
+.dark .matchday-nav:hover {
+  background: rgba(50, 50, 50, 0.55);
+  border-color: rgba(255, 255, 255, 0.35);
+}
+.matchday-counter {
+  text-align: center;
+  margin-top: 0.75rem;
+  font-size: 0.8rem;
+  color: var(--color-ink-muted);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+.matchday-counter-sep {
+  margin: 0 0.15em;
+}
+@media (max-width: 540px) {
+  .matchday-carousel {
+    max-width: 100%;
+    --slide-w: 100%;
+    --slide-gap: 0%;
+  }
+  .matchday-nav {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+  .matchday-nav--prev { left: 0.5rem; }
+  .matchday-nav--next { right: 0.5rem; }
+  /* No peek on narrow screens, so drop the edge fade to keep the image crisp. */
+  .matchday-stage {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .matchday-track {
+    transition: none;
+  }
+}
+
 /* ── Music Player & Vinyl Turntable ── */
 .music-player-wrapper {
   max-width: 780px;
