@@ -27,35 +27,6 @@ const cvZH = `${BASE}/cv/Yifan_Chen_CV_ZH.pdf`.replace(/\/+/g, "/");
         <span class="lang-zh">{c.hobbies.zh.pageHeading}</span>
       </h1>
     </div>
-    <!-- Matchday photos placeholders -->
-    <div class="reveal">
-      <h2 class="hobbies-heading" style="margin-bottom: 1.5rem;">
-        <span class="lang-en">{c.hobbies.en.liverpoolHeading}</span>
-        <span class="lang-zh">{c.hobbies.zh.liverpoolHeading}</span>
-      </h2>
-      <div class="gallery gallery--photos">
-        {c.hobbies.liverpoolPhotos.map((photo) => (
-          photo ? (
-            <div class="gallery-item gallery-item--photo">
-              <img src={`${BASE}${photo}`.replace(/\/+/g, "/")} alt="Matchday" />
-            </div>
-          ) : (
-            <div class="gallery-item gallery-item--photo">
-              <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <rect x="3" y="3" width="18" height="18" rx="2" />
-                <circle cx="9" cy="9" r="2" />
-                <path d="M21 15l-5-5L5 21" />
-              </svg>
-              <span class="lang-en">{c.hobbies.en.photoPlaceholder}</span>
-              <span class="lang-zh">{c.hobbies.zh.photoPlaceholder}</span>
-            </div>
-          )
-        ))}
-      </div>
-    </div>
-
-    <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--color-rule);" />
-
     <!-- Albums (click record to play) -->
     <div class="reveal">
       <h2 class="hobbies-heading">
@@ -119,10 +90,10 @@ const cvZH = `${BASE}/cv/Yifan_Chen_CV_ZH.pdf`.replace(/\/+/g, "/");
 
           <!-- Subjective interpretation -->
           <p class="track-desc lang-en" id="track-desc-en">
-            Discover Evan's favorite music. Click the vinyl record on the left to get a random music snippet.
+            Click the vinyl record on the left to get a random music snippet.
           </p>
           <p class="track-desc lang-zh" id="track-desc-zh">
-            探索 Evan 喜欢的音乐。点击左侧的黑胶唱片，即可收获一段随机音乐片段。
+            点击左侧的黑胶唱片，即可收获一段随机音乐片段。
           </p>
         </div>
       </div>
@@ -130,6 +101,35 @@ const cvZH = `${BASE}/cv/Yifan_Chen_CV_ZH.pdf`.replace(/\/+/g, "/");
       <!-- JSON data bridge for JavaScript -->
       <div id="album-data" data-albums={JSON.stringify(c.hobbies.albums)} data-base={BASE} style="display: none;"></div>
       <audio id="album-audio" preload="none"></audio>
+    </div>
+
+    <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--color-rule);" />
+
+    <!-- Matchday photos placeholders -->
+    <div class="reveal">
+      <h2 class="hobbies-heading" style="margin-bottom: 1.5rem;">
+        <span class="lang-en">{c.hobbies.en.liverpoolHeading}</span>
+        <span class="lang-zh">{c.hobbies.zh.liverpoolHeading}</span>
+      </h2>
+      <div class="gallery gallery--photos">
+        {c.hobbies.liverpoolPhotos.map((photo) => (
+          photo ? (
+            <div class="gallery-item gallery-item--photo">
+              <img src={`${BASE}${photo}`.replace(/\/+/g, "/")} alt="Matchday" />
+            </div>
+          ) : (
+            <div class="gallery-item gallery-item--photo">
+              <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="3" y="3" width="18" height="18" rx="2" />
+                <circle cx="9" cy="9" r="2" />
+                <path d="M21 15l-5-5L5 21" />
+              </svg>
+              <span class="lang-en">{c.hobbies.en.photoPlaceholder}</span>
+              <span class="lang-zh">{c.hobbies.zh.photoPlaceholder}</span>
+            </div>
+          )
+        ))}
+      </div>
     </div>
 
     <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--color-rule);" />
