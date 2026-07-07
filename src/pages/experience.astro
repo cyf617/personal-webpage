@@ -24,25 +24,34 @@ import { content as c } from "../data/content";
           <div class="timeline-item reveal">
             <span class="timeline-dot"></span>
             <div class="timeline-line"></div>
-            <div class="timeline-header">
-              <h2 class="timeline-title">
-                <span class="lang-en">{en.company}</span>
-                <span class="lang-zh">{zh.company}</span>
-              </h2>
-              <span class="timeline-date">
-                <span class="lang-en">{en.date}</span>
-                <span class="lang-zh">{zh.date}</span>
-              </span>
+            <div class="timeline-body">
+              <div class="timeline-content">
+                <div class="timeline-header">
+                  <h2 class="timeline-title">
+                    <span class="lang-en">{en.company}</span>
+                    <span class="lang-zh">{zh.company}</span>
+                  </h2>
+                  <span class="timeline-date">
+                    <span class="lang-en">{en.date}</span>
+                    <span class="lang-zh">{zh.date}</span>
+                  </span>
+                </div>
+                <p class="timeline-subtitle">
+                  <span class="lang-en">{en.role} — {en.location}</span>
+                  <span class="lang-zh">{zh.role} — {zh.location}</span>
+                </p>
+                <ul class="timeline-details">
+                  {en.detail.map((_, j) => (
+                    <li class="timeline-detail-item"><span><span class="lang-en">{en.detail[j]}</span><span class="lang-zh">{zh.detail[j]}</span></span></li>
+                  ))}
+                </ul>
+              </div>
+              {en.logo && (
+                <div class="timeline-logo">
+                  <img src={en.logo} alt={`${en.company} logo`} loading="lazy" />
+                </div>
+              )}
             </div>
-            <p class="timeline-subtitle">
-              <span class="lang-en">{en.role} — {en.location}</span>
-              <span class="lang-zh">{zh.role} — {zh.location}</span>
-            </p>
-            <ul class="timeline-details">
-              {en.detail.map((_, j) => (
-                <li class="timeline-detail-item"><span><span class="lang-en">{en.detail[j]}</span><span class="lang-zh">{zh.detail[j]}</span></span></li>
-              ))}
-            </ul>
           </div>
         );
       })}
