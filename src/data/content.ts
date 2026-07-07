@@ -478,6 +478,63 @@ export const content = {
   },
 
   // ┌──────────────────────────────────────────────────────
+  // │ ⑨.⑤ 足迹页面数据 (Travel page data)
+  // └──────────────────────────────────────────────────────
+  travel: {
+    en: {
+      pageHeading: "Travel Map",
+      subheading: "Every city is a chapter of my life.",
+    },
+    zh: {
+      pageHeading: "我的足迹",
+      subheading: "每一个城市都是人生的一段章节。",
+    },
+    cities: [
+      // 求学/工作主要城市
+      { nameEn: "London, UK", nameZh: "伦敦，英国", coords: [51.5074, -0.1278] },
+      { nameEn: "Suzhou, China", nameZh: "苏州，中国", coords: [31.2990, 120.6190] },
+      { nameEn: "Beijing, China", nameZh: "北京，中国", coords: [39.9042, 116.4074] },
+      // 中国大陆城市
+      { nameEn: "Zhengzhou, China", nameZh: "郑州，中国", coords: [34.7579, 113.6654] },
+      { nameEn: "Xi'an, China", nameZh: "西安，中国", coords: [34.3416, 108.9398] },
+      { nameEn: "Shenzhen, China", nameZh: "深圳，中国", coords: [22.5431, 114.0579] },
+      { nameEn: "Guangzhou, China", nameZh: "广州，中国", coords: [23.1291, 113.2644] },
+      { nameEn: "Qingdao, China", nameZh: "青岛，中国", coords: [36.0671, 120.3826] },
+      { nameEn: "Yantai, China", nameZh: "烟台，中国", coords: [37.4638, 121.4479] },
+      { nameEn: "Shanghai, China", nameZh: "上海，中国", coords: [31.2304, 121.4737] },
+      { nameEn: "Wuxi, China", nameZh: "无锡，中国", coords: [31.4912, 120.3119] },
+      { nameEn: "Luoyang, China", nameZh: "洛阳，中国", coords: [34.6197, 112.4542] },
+      { nameEn: "Kaifeng, China", nameZh: "开封，中国", coords: [34.7973, 114.3076] },
+      { nameEn: "Wuhan, China", nameZh: "武汉，中国", coords: [30.5928, 114.3055] },
+      { nameEn: "Nanjing, China", nameZh: "南京，中国", coords: [32.0603, 118.7969] },
+      { nameEn: "Hangzhou, China", nameZh: "杭州，中国", coords: [30.2741, 120.1551] },
+      { nameEn: "Chengdu, China", nameZh: "成都，中国", coords: [30.5728, 104.0665] },
+      { nameEn: "Haikou, China", nameZh: "海口，中国", coords: [20.0174, 110.3492] },
+      { nameEn: "Sanya, China", nameZh: "三亚，中国", coords: [18.2528, 109.5119] },
+      // 特别行政区
+      { nameEn: "Hong Kong, China", nameZh: "香港，中国特别行政区", coords: [22.3193, 114.1694] },
+      { nameEn: "Macao, China", nameZh: "澳门，中国特别行政区", coords: [22.1987, 113.5439] },
+      // 日本
+      { nameEn: "Tokyo, Japan", nameZh: "东京，日本", coords: [35.6762, 139.6503] },
+      // 欧洲
+      { nameEn: "Paris, France", nameZh: "巴黎，法国", coords: [48.8566, 2.3522] },
+      { nameEn: "Luxembourg", nameZh: "卢森堡", coords: [49.6116, 6.1319] },
+      { nameEn: "Geneva, Switzerland", nameZh: "日内瓦，瑞士", coords: [46.2044, 6.1432] },
+      { nameEn: "Zurich, Switzerland", nameZh: "苏黎世，瑞士", coords: [47.3769, 8.5417] },
+      { nameEn: "Lausanne, Switzerland", nameZh: "洛桑，瑞士", coords: [46.5197, 6.6323] },
+      { nameEn: "Rome, Italy", nameZh: "罗马，意大利", coords: [41.9028, 12.4964] },
+      { nameEn: "Milan, Italy", nameZh: "米兰，意大利", coords: [45.4642, 9.1900] },
+      { nameEn: "Florence, Italy", nameZh: "佛罗伦萨，意大利", coords: [43.7696, 11.2558] },
+      { nameEn: "Brussels, Belgium", nameZh: "布鲁塞尔，比利时", coords: [50.8503, 4.3517] },
+      { nameEn: "Frankfurt, Germany", nameZh: "法兰克福，德国", coords: [50.1109, 8.6821] },
+      { nameEn: "Manchester, UK", nameZh: "曼彻斯特，英国", coords: [53.4808, -2.2426] },
+      { nameEn: "Liverpool, UK", nameZh: "利物浦，英国", coords: [53.4084, -2.9916] },
+      // 美国
+      { nameEn: "Honolulu, USA", nameZh: "檀香山，美国", coords: [21.3069, -157.8583] }
+    ]
+  },
+
+  // ┌──────────────────────────────────────────────────────
   // │ ⑩ 底部 Footer(每个页面底部都会显示)
   // └──────────────────────────────────────────────────────
   footer: {

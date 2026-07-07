@@ -1,0 +1,159 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { content as c } from "../data/content";
+---
+
+<Layout current="/travel" title="Travel Footprints — Yifan Chen" description="Travel map of Yifan Chen — cities visited around the world.">
+  <!-- Load Leaflet CSS from CDN -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+  />
+
+  <section class="page-section">
+    <div class="reveal animate-fade-in">
+      <p class="section-siglum">
+        <span class="lang-en">§4 Travel</span>
+        <span class="lang-zh">§4 足迹</span>
+      </p>
+      <h1 class="section-title">
+        <span class="lang-en">{c.travel.en.pageHeading}</span>
+        <span class="lang-zh">{c.travel.zh.pageHeading}</span>
+      </h1>
+      <p class="about-bio" style="margin-bottom: 1.5rem;">
+        <span class="lang-en">{c.travel.en.subheading}</span>
+        <span class="lang-zh">{c.travel.zh.subheading}</span>
+      </p>
+    </div>
+
+    <!-- Map container -->
+    <div class="reveal animate-fade-in" style="animation-delay: 0.1s;">
+      <div id="map" class="map-container"></div>
+    </div>
+  </section>
+
+  <!-- Data Bridge for JavaScript -->
+  <div id="map-data" data-cities={JSON.stringify(c.travel.cities)} style="display: none;"></div>
+
+  <!-- Load Leaflet JS from CDN -->
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+  ></script>
+
+  <script is:inline>
+    window.addEventListener('DOMContentLoaded', () => {
+      // 1. Get data from bridge
+      const dataBridge = document.getElementById('map-data');
+      if (!dataBridge) return;
+      const cities = JSON.parse(dataBridge.dataset.cities || '[]');
+
+      // 2. Initialize Leaflet Map
+      // Center view around Eurasia/Global area initially
+      const map = L.map('map', {
+        minZoom: 2,
+        maxZoom: 12,
+        scrollWheelZoom: true,
+        attributionControl: true
+      }).setView([35, 55], 3);
+
+      // 3. WGS-84 to GCJ-02 (Mars coordinates) converter for correct mapping on Chinese basemaps
+      function outOfChina(lat, lon) {
+        return (lon < 72.004 || lon > 137.8347 || lat < 0.8293 || lat > 55.8271);
+      }
+      function transformLat(x, y) {
+        let ret = -100.0 + 2.0 * x + 3.0 * y + 0.2 * y * y + 0.1 * x * y + 0.2 * Math.sqrt(Math.abs(x));
+        ret += (20.0 * Math.sin(6.0 * x * Math.PI) + 20.0 * Math.sin(2.0 * x * Math.PI)) * 2.0 / 3.0;
+        ret += (20.0 * Math.sin(y * Math.PI) + 40.0 * Math.sin(y / 3.0 * Math.PI)) * 2.0 / 3.0;
+        ret += (160.0 * Math.sin(y / 12.0 * Math.PI) + 320 * Math.sin(y * Math.PI / 30.0)) * 2.0 / 3.0;
+        return ret;
+      }
+      function transformLon(x, y) {
+        let ret = 300.0 + x + 2.0 * y + 0.1 * x * x + 0.1 * x * y + 0.1 * Math.sqrt(Math.abs(x));
+        ret += (20.0 * Math.sin(6.0 * x * Math.PI) + 20.0 * Math.sin(2.0 * x * Math.PI)) * 2.0 / 3.0;
+        ret += (20.0 * Math.sin(x * Math.PI) + 40.0 * Math.sin(x / 3.0 * Math.PI)) * 2.0 / 3.0;
+        ret += (150.0 * Math.sin(x / 12.0 * Math.PI) + 300.0 * Math.sin(x / 30.0 * Math.PI)) * 2.0 / 3.0;
+        return ret;
+      }
+      function wgs84ToGcj02(lat, lon) {
+        if (outOfChina(lat, lon)) return [lat, lon];
+        const a = 6378245.0;
+        const ee = 0.006693421622965943;
+        let dLat = transformLat(lon - 105.0, lat - 35.0);
+        let dLon = transformLon(lon - 105.0, lat - 35.0);
+        const radLat = lat / 180.0 * Math.PI;
+        let magic = Math.sin(radLat);
+        magic = 1 - ee * magic * magic;
+        const sqrtMagic = Math.sqrt(magic);
+        dLat = (dLat * 180.0) / ((a * (1 - ee)) / (magic * sqrtMagic) * Math.PI);
+        dLon = (dLon * 180.0) / (a / sqrtMagic * Math.cos(radLat) * Math.PI);
+        return [lat + dLat, lon + dLon];
+      }
+
+      // 4. Add Gaode Map Tile Layer (Complies with China's official border regulations)
+      // Note: We use the 'en' basemap for both versions because Gaode's 'zh_cn' tile server lacks
+      // global tile coverage at small zoom levels (large areas), whereas the 'en' server is fully global.
+      const lang = 'en';
+      L.tileLayer(`https://webrd0{s}.is.autonavi.com/appmaptile?lang=${lang}&size=1&scale=1&style=8&x={x}&y={y}&z={z}`, {
+        subdomains: ['1', '2', '3', '4'],
+        attribution: '&copy; <a href="https://ditu.amap.com/" target="_blank">高德地图</a>',
+        maxZoom: 18
+      }).addTo(map);
+
+      // 5. Custom Pulse Icon generator
+      const createPulseIcon = () => {
+        return L.divIcon({
+          className: 'custom-pulse-marker',
+          html: '<div class="marker-pulse"></div><div class="marker-dot"></div>',
+          iconSize: [16, 16],
+          iconAnchor: [8, 8]
+        });
+      };
+
+      // 6. Add markers to the map
+      const markerGroup = [];
+      cities.forEach(city => {
+        if (!city.coords || city.coords.length !== 2) return;
+
+        // Wrap longitudes that are far west (Americas/Pacific) to keep map contiguous across the Pacific
+        let lat = city.coords[0];
+        let lng = city.coords[1];
+        if (lng < -40) {
+          lng += 360;
+        }
+
+        const popupContent = document.createElement('div');
+        popupContent.className = 'travel-popup';
+        popupContent.innerHTML = `
+          <div class="lang-en">
+            <div class="popup-title" style="margin-bottom: 0; font-size: 0.9rem;">${city.nameEn}</div>
+          </div>
+          <div class="lang-zh">
+            <div class="popup-title" style="margin-bottom: 0; font-size: 0.9rem;">${city.nameZh}</div>
+          </div>
+        `;
+
+        // Translate coordinates for points inside China to align properly with GCJ-02 projection
+        const finalCoords = wgs84ToGcj02(lat, lng);
+
+        const marker = L.marker(finalCoords, { icon: createPulseIcon() })
+          .addTo(map)
+          .bindPopup(popupContent, {
+            maxWidth: 260,
+            closeButton: false
+          });
+
+        markerGroup.push(marker);
+      });
+
+      // 7. Fit bounds automatically to show all markers with padding
+      if (markerGroup.length > 0) {
+        const group = new L.featureGroup(markerGroup);
+        map.fitBounds(group.getBounds().pad(0.15));
+      }
+    });
+  </script>
+</Layout>

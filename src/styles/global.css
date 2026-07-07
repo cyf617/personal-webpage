@@ -925,3 +925,114 @@ html[data-lang="zh"] .lang-en { display: none !important; }
 .lightbox-close:hover {
   color: var(--color-link-hover);
 }
+
+/* ── Travel Map ── */
+.map-container {
+  height: 500px;
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid var(--color-rule);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  margin-top: 1.5rem;
+  margin-bottom: 3rem;
+  z-index: 5;
+}
+
+/* Custom Leaflet Marker (Pulse Effect) */
+.custom-pulse-marker {
+  position: relative;
+  width: 16px !important;
+  height: 16px !important;
+  margin-left: -8px !important;
+  margin-top: -8px !important;
+}
+
+.marker-dot {
+  width: 12px;
+  height: 12px;
+  background-color: var(--color-link);
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  border: 2px solid #ffffff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  z-index: 2;
+}
+
+.marker-pulse {
+  width: 24px;
+  height: 24px;
+  background-color: var(--color-link);
+  border-radius: 50%;
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  opacity: 0;
+  z-index: 1;
+  animation: marker-glow 2s infinite ease-out;
+  pointer-events: none;
+}
+
+@keyframes marker-glow {
+  0% {
+    transform: scale(0.3);
+    opacity: 0.8;
+  }
+  80% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* Custom Leaflet Popup Styling to match the website theme */
+.leaflet-popup-content-wrapper {
+  background: var(--color-bg) !important;
+  color: var(--color-ink) !important;
+  border-radius: 8px !important;
+  border: 1px solid var(--color-rule) !important;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08) !important;
+  font-family: var(--font-body) !important;
+  padding: 4px !important;
+}
+.leaflet-popup-content {
+  margin: 8px 12px !important;
+  line-height: 1.4 !important;
+}
+.leaflet-popup-tip {
+  background: var(--color-bg) !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1) !important;
+}
+.popup-title {
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 2px;
+  color: #000;
+}
+.popup-date {
+  font-size: 0.75rem;
+  color: var(--color-ink-muted);
+  margin-bottom: 6px;
+}
+.popup-desc {
+  font-size: 0.85rem;
+  line-height: 1.4;
+  color: var(--color-ink-secondary);
+}
+
+/* Dark mode adjustments for popup */
+.dark .leaflet-popup-content-wrapper {
+  background: #1e1e1e !important;
+  border-color: #333 !important;
+  color: #eee !important;
+}
+.dark .leaflet-popup-tip {
+  background: #1e1e1e !important;
+}
+.dark .popup-title {
+  color: #fff;
+}
