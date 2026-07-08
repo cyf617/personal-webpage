@@ -168,7 +168,7 @@ export const content = {
           images: ["/projects/Disser1.png", "/projects/Disser2.png", "/projects/Disser3.png"],
         },
         {
-          title: "基于大数据与AI的印度首末公里物流<br />解决方法",
+          title: "基于大数据与AI的印度首末公里<br />物流解决方法",
           role: "核心贡献者 · 与世界银行 (World Bank Group) 合作",
           date: "2025 年 5 月 — 7 月",
           summary:
