@@ -90,7 +90,7 @@ export const content = {
   research: {
     en: {
       heading: "Selected Projects",
-      subheading: "Applied AI, data analysis and research across sports, mobility and trustworthy decision support.",
+      subheading: "",
       items: [
         {
           title: "Personalised Car-following Modelling using Diffusion-based Model",
@@ -151,7 +151,7 @@ export const content = {
     },
     zh: {
       heading: "项目经历",
-      subheading: "覆盖体育 AI、复杂交通系统、可信 AI 与数据分析的代表性项目。",
+      subheading: "",
       items: [
         {
           title: "基于扩散模型的个性化跟车建模",
@@ -168,7 +168,7 @@ export const content = {
           images: ["/projects/Disser1.png", "/projects/Disser2.png", "/projects/Disser3.png"],
         },
         {
-          title: "印度首末公里物流大数据与 AI 模型",
+          title: "基于大数据与AI的印度首末公里物流<br />解决方法",
           role: "核心贡献者 · 与世界银行 (World Bank Group) 合作",
           date: "2025 年 5 月 — 7 月",
           summary:
@@ -182,7 +182,7 @@ export const content = {
           images: ["/projects/GPS1.png", "/projects/GPS4.png", "/projects/GPS5.png", "/projects/GPS2.png"],
         },
         {
-          title: "可解释机器学习驱动的加拿大汽车行业 CO₂ 减排政策",
+          title: "可解释ML驱动的加拿大汽车行业<br />CO₂ 减排政策",
           role: "核心贡献者 · 帝国理工学院",
           date: "2025 年 1 月 — 3 月",
           summary:
@@ -408,7 +408,7 @@ export const content = {
       body: "Outside of work, I'm also passionate about football, basketball, and music. My favourite football club is Liverpool FC, and the genres I love most are R&B and Soul. Below are some of my matchday moments and the music I've been listening to lately. If you share any of these interests, feel free to reach out via the contact below!",
       liverpoolHeading: "My Matchday Moments",
       albumsHeading: "Recently Listening",
-      albumsCaption: "Click the vinyl record to randomly explore a music snippet.",
+      albumsCaption: "",
       photoPlaceholder: "Matchday photo",
       albumPlaceholder: "Album cover",
     },
@@ -418,7 +418,7 @@ export const content = {
       body: "在工作之余，我对足球、篮球及音乐等事物也非常感兴趣。我最喜欢的足球俱乐部是利物浦，最喜欢的音乐类型是 R&B 和 Soul。下方展示了我的一些观赛瞬间以及最近在听的音乐，如果你和我有一样的兴趣爱好，也欢迎点击下方联系方式交流讨论！",
       liverpoolHeading: "我的观赛瞬间",
       albumsHeading: "最近在听的专辑",
-      albumsCaption: "点击黑胶唱片随机探索一段音乐片段。",
+      albumsCaption: "",
       photoPlaceholder: "观赛照片",
       albumPlaceholder: "专辑封面",
     },
@@ -483,7 +483,7 @@ export const content = {
   travel: {
     en: {
       pageHeading: "Travel Map",
-      subheading: "Every city is a chapter of my life.",
+      subheading: "Every city is a chapter of life.",
     },
     zh: {
       pageHeading: "我的足迹",
