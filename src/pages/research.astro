@@ -1,6 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { content as c } from "../data/content";
+const BASE = import.meta.env.BASE_URL;
+const withBase = (p: string) => `${BASE}${p}`.replace(/\/+/g, "/");
 ---
 
 <Layout current="/research" title="Research — Yifan Chen" description="Research projects of Yifan Chen — AI, transportation, sports AI and trustworthy machine learning.">
@@ -59,7 +61,7 @@ import { content as c } from "../data/content";
                         { "project-gallery-image--wide": isWide }
                       ]}
                     >
-                      <img src={img} alt={en.title} loading="lazy" />
+                      <img src={withBase(img)} alt={en.title} loading="lazy" />
                     </div>
                   );
                 })}
