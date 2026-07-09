@@ -31,7 +31,7 @@ const withBase = (p: string) => `${BASE}${p}`.replace(/\/+/g, "/");
           <div class="project-card-grid">
             <div class="project-details">
               <div class="project-header">
-                <h2 class="project-title"><span class="lang-en">{en.title}</span><span class="lang-zh">{zh.title}</span></h2>
+                <h2 class="project-title"><span class="lang-en" set:html={en.title}></span><span class="lang-zh" set:html={zh.title}></span></h2>
                 <span class="project-date"><span class="lang-en">{en.date}</span><span class="lang-zh">{zh.date}</span></span>
               </div>
               <p class="project-role"><span class="lang-en">{en.role}</span><span class="lang-zh">{zh.role}</span></p>
