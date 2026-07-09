@@ -389,12 +389,16 @@ h1, h2, h3, h4, h5 {
   color: var(--color-ink-secondary);
   margin-bottom: 0.25rem;
 }
+.timeline-body {
+  display: grid;
+  grid-template-columns: 1fr 120px;
+  gap: 1.25rem;
+  align-items: start;
+}
 @media (min-width: 768px) {
   .timeline-body {
-    display: grid;
     grid-template-columns: 1fr 130px;
     gap: 2rem;
-    align-items: start;
   }
 }
 .timeline-content {
@@ -404,8 +408,12 @@ h1, h2, h3, h4, h5 {
   background: #f7f7f7;
   border: 1px solid var(--color-rule);
   border-radius: 6px;
-  padding: 0.5rem 0.75rem;
-  margin-top: 1.25rem;
+  padding: 0.4rem 0.5rem;
+}
+@media (min-width: 768px) {
+  .timeline-logo {
+    padding: 0.5rem 0.75rem;
+  }
 }
 .timeline-logo img {
   display: block;
